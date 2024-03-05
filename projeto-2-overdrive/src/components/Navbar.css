@@ -1,0 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.text-link {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.navbar {
+    min-height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #525151;
+    border-bottom: 1px solid #363636;
+    padding: 0.1em 2em;
+    color: #fff;
+}
+
+.navbar ul li {
+    text-decoration: none;
+    display: inline;
+    padding: .3em;
+    font-size: 1.3em;
+    font-weight: bold;  
+    border: 1px solid #363636;
+    border-radius: 5px;
+    margin: 1px 5px;  
+    transition: .3s;
+}
+
+
+
+.navbar ul li:hover {
+    background-color: #363636;
+}
