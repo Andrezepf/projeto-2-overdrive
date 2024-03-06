@@ -1,0 +1,11 @@
+* {
+    text-align: center;
+}
+
+table {
+    margin: auto;
+}
+
+table td {
+    width: 10vw;
+}

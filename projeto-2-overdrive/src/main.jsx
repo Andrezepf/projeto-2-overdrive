@@ -13,6 +13,7 @@ import AddPessoa from './pages/AddPessoa.jsx'
 import AddEmpresa from './pages/AddEmpresa.jsx'
 import Footer from './components/Footer.jsx'
 import Navbar from './components/Navbar.jsx'
+import EditarPessoa from './pages/EditarPessoa.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='/pessoa' element={<Pessoa/>}/>
             <Route path='/adicionarpessoa' element={<AddPessoa/>}/>
             <Route path='/adicionarempresa' element={<AddEmpresa/>}/>
+            <Route path='/editarpessoa' element={<EditarPessoa/>}/>
           </Route>  
         </Routes>
       </div>
