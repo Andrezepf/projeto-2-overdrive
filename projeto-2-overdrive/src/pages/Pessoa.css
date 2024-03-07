@@ -1,5 +1,7 @@
-* {
+.tabela {
+    width: 60vw;
     text-align: center;
+    margin: auto;
 }
 
 table {

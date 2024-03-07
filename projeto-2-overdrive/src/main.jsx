@@ -22,15 +22,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Navbar/>
       <div className="container">
         <Routes>
-          <Route element={<App/>}>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/index' element={<Index/>}/>
-            <Route path='/empresa' element={<Empresa/>}/>
-            <Route path='/pessoa' element={<Pessoa/>}/>
-            <Route path='/adicionarpessoa' element={<AddPessoa/>}/>
-            <Route path='/adicionarempresa' element={<AddEmpresa/>}/>
-            <Route path='/editarpessoa' element={<EditarPessoa/>}/>
-          </Route>  
+            <Route element={<App/>}>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/index' element={<Index/>}/>
+              <Route path='/empresa' element={<Empresa/>}/>
+              <Route path='/pessoa' element={<Pessoa/>}/>
+              <Route path='/adicionarpessoa' element={<AddPessoa/>}/>
+              <Route path='/adicionarempresa' element={<AddEmpresa/>}/>
+              <Route path='/editarpessoa' element={<EditarPessoa/>}/>
+            </Route>  
         </Routes>
       </div>
       <Footer/>

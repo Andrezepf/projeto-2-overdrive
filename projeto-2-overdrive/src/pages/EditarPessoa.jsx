@@ -1,29 +1,46 @@
 import React from 'react'
 
+import './EditarPessoa.css'
+
+
 const EditarPessoa = () => {
     return (
         <div id="edit-profile">
-      <form>
-  <div className="mb-3">
-    <label for="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div className="mb-3">
-    <label for="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1"/>
-  </div>
-  <select class="form-select" aria-label="Default select example">
-  <option value="1" selected>Ativo</option>
-  <option value="2">Inativo</option>
-</select>
-  <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
-</form>
-    </div>
+          <h2>Informações da pessoa: </h2>
+          <form>
+            <div className="mb-3">
+              <label className="form-label">ID:</label>
+              <input type="text" className="form-control" value='1' disabled/>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Nome:</label>
+              <input type="text" className="form-control" value='João da Silva' disabled/>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">CPF:</label>
+              <input type="text" className="form-control" value='454.656.232-88' disabled/>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Telefone:</label>
+              <input type="text" className="form-control" value='33333333' disabled/>
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Usuário:</label>
+              <input type="text" className="form-control" value='joao.silva' disabled/>
+            </div>
+            
+
+              
+            <label className="form-label">Situação:</label>
+            <select class="form-select" aria-label="Default select example" disabled>
+            <option value="1" selected>Ativo</option>
+            <option value="2">Inativo</option>
+            <option value="3">Pendente</option>
+          </select>
+            <button type="submit" className="btn btn-primary m-2">Editar</button>
+            <button type="submit" className="btn btn-primary m-2">Excluir</button>
+          </form>
+        </div>
     )
 }
 
