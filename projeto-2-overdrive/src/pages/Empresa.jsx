@@ -1,12 +1,33 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
+import Message from "../components/Message";
 
 
 const Empresa = () => {
+  const [empresas, setEmpresas] = useState([]);
+
+  const getData = () => {
+    var requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:3030/empresas", requestOptions)
+      .then((response) => response.json())
+      .then((result) => setEmpresas(result))
+      .catch((error) => console.log("error", error));
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div>
 
         <h1>Empresa</h1>
+        <Message color="success" text="Mensagem de sucesso!"/>
         <h3>Mostrar tabela de empresas</h3>
+          <Link to="/adicionarempresa"><button type="submit" className="btn btn-primary m-2">Adicionar empresa</button></Link>
         <div className="tabela">
         <table className="table table-hover">
           <thead>
@@ -18,25 +39,19 @@ const Empresa = () => {
               <th scope="col">Visualizar</th>
             </tr>
           </thead>
+          {empresas.map((empresa) => (
           <tbody>
             <tr>
-              <td scope="row">1</td>
-              <td>Empresa teste</td>
-              <td>454.656.232-88</td>
-              <td>Inativo</td>
-              <td><Link to="/editarpessoa"><button type="button" className="btn btn-light">Light</button></Link></td>
-            </tr>
-            <tr>
-              <td scope="row">2</td>
-              <td>Teste de Empresa</td>
-              <td>454.656.232-89</td>
-              <td>Ativo</td>
-              <td><Link to="/editarpessoa"><button type="button" className="btn btn-light">Light</button></Link></td>
+              <td scope="row">{empresa.id}</td>
+              <td>{empresa.nomefantasia}</td>
+              <td>{empresa.cnpj}</td>
+              <td>{empresa.situacao}</td>
+              <td><Link to={`/visualizarempresa/${empresa.id}`}><button type="button" className="btn btn-light">Light</button></Link></td>
             </tr>
           </tbody>
+          ))}
         </table>
         </div>
-        <Link to="/adicionarempresa">Adicionar nova empresa</Link>
 
     </div>
   )

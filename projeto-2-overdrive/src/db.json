@@ -1,0 +1,57 @@
+{
+    "pessoas": [
+        {
+        "id": 1,
+        "nome": "João da Silva",
+        "cpf": "454.656.232-88",
+        "telefone": "33333333",
+        "usuario": "joao.silva",
+        "situacao": "Inativo"
+    },
+    {
+        "id": 2,
+        "nome": "Maria Oliveira",
+        "cpf": "454.656.232-89",
+        "telefone": "33333333",
+        "usuario": "maria.oliveira",
+        "situacao": "Ativo"
+    },
+    {
+        "id": 3,
+        "nome": "José de Almeida",
+        "cpf": "454.656.232-82",
+        "telefone": "33333333",
+        "usuario": "jose.almeida",
+        "situacao": "Pendente"
+    }
+    ],
+    "empresas": [
+        {
+            "id": 1,
+            "nomefantasia": "Empresa teste",
+            "nomeempresarial": "Empresa teste",
+            "cnpj": "39482034823",
+            "abertura": "13/12/2001",
+            "endereco": "rua blablabla",
+            "telefone": "33333333",
+            "natureza": "asda",
+            "atividades": "dfada",
+            "capital": "34578235",
+            "situacao": "Ativo"
+        },
+        {
+            "id": 2,
+            "nomefantasia": "Empresa para teste",
+            "nomeempresarial": "Empresa teste",
+            "cnpj": "39482034824",
+            "abertura": "13/12/2001",
+            "endereco": "rua blablabla",
+            "telefone": "33333333",
+            "natureza": "asda",
+            "atividades": "dfada",
+            "capital": "34578235",
+            "situacao": "Inativo"
+        }
+        
+    ]
+}
