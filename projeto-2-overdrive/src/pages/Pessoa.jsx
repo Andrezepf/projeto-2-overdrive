@@ -25,10 +25,10 @@ const Pessoa = () => {
   return (
     <div>
 
-        <h1>Pessoa</h1>
-        <Message color="success" text="Mensagem de sucesso!"/>
-        <h3>Mostrar tabela de pessoas</h3>
-            <Link to="/adicionarpessoa"><button type="submit" className="btn btn-primary m-2">Adicionar pessoa</button></Link>
+        <h1>Pessoas</h1>
+        <Message color="success" text="Mensagem enviada com sucesso!"/>
+        <span className="spanlista">Lista de pessoas cadastradas: </span>
+            <Link to="/adicionarpessoa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar pessoa</button></Link>
 
 
         <div className="tabela">
@@ -39,7 +39,7 @@ const Pessoa = () => {
                 <th scope="col">Nome</th>
                 <th scope="col">CPF</th>
                 <th scope="col">Status</th>
-                <th scope="col">Visualizar</th>
+                <th scope="col">Ações</th>
               </tr>
             </thead>
         {pessoas.map((pessoa) => (
@@ -49,7 +49,7 @@ const Pessoa = () => {
                 <td>{pessoa.nome}</td>
                 <td>{pessoa.cpf}</td>
                 <td>{pessoa.situacao}</td>
-                <td><Link to={`/visualizarpessoa/${pessoa.id}`} ><button type="button" className="btn btn-light">Light</button></Link></td>
+                <td><Link to={`/visualizarpessoa/${pessoa.id}`} ><button type="button" className="btn btncor">Visualizar</button></Link></td>
               </tr>
               
             </tbody>

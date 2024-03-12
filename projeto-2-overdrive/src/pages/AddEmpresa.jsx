@@ -51,8 +51,8 @@ const AddEmpresa = () => {
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
           </select>
-          <Link to="/empresa"><button type="submit" className="btn btn-primary m-2">Criar</button></Link>
-          <Link to="/empresa"><button type="submit" className="btn btn-primary m-2">Voltar</button></Link>
+          <Link to="/empresa"><button type="submit" className="btn btncor m-2">Criar</button></Link>
+          <Link to="/empresa"><button type="submit" className="btn btncor m-2">Voltar</button></Link>
           </form>
         </div>
   )

@@ -11,3 +11,23 @@ table {
 table td {
     width: 10vw;
 }
+
+h1 {
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.add {
+    float: right;
+}
+
+.spanlista {
+    font-size: 1.5em;
+
+}
+
+h1 {
+    margin-bottom: 10px;
+}

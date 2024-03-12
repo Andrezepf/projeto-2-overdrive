@@ -1,5 +1,17 @@
 #corpo {
     background-color: #f8f8f8;
-    width: 70vw;
+    width: 65vw;
+    min-height: 85vh;
     margin: auto;
+    padding: 20px 40px;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    
+}
+
+.btncor {
+    background-color: rgb(51, 114, 196);
+    color: white;
+}
+.btncor:hover {
+    border: 1px solid rgb(51, 114, 196);
 }

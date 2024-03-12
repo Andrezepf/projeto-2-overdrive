@@ -23,6 +23,14 @@
         "telefone": "33333333",
         "usuario": "jose.almeida",
         "situacao": "Pendente"
+    },
+    {
+        "id": 4,
+        "nome": "Bruna do Santos",
+        "cpf": "454.656.232-85",
+        "telefone": "(19)4444-4444",
+        "usuario": "bruna.santos",
+        "situacao": "Pendente"
     }
     ],
     "empresas": [
@@ -30,28 +38,42 @@
             "id": 1,
             "nomefantasia": "Empresa teste",
             "nomeempresarial": "Empresa teste",
-            "cnpj": "39482034823",
+            "cnpj": "333.444.555/0001-66",
             "abertura": "13/12/2001",
             "endereco": "rua blablabla",
             "telefone": "33333333",
             "natureza": "asda",
             "atividades": "dfada",
-            "capital": "34578235",
+            "capital": "500.000,00",
             "situacao": "Ativo"
         },
         {
             "id": 2,
             "nomefantasia": "Empresa para teste",
             "nomeempresarial": "Empresa teste",
-            "cnpj": "39482034824",
-            "abertura": "13/12/2001",
+            "cnpj": "111.222.666/0001-77",
+            "abertura": "17/10/1990",
             "endereco": "rua blablabla",
             "telefone": "33333333",
             "natureza": "asda",
             "atividades": "dfada",
-            "capital": "34578235",
+            "capital": "40.000,00",
             "situacao": "Inativo"
+        },
+        {
+            "id": 3,
+            "nomefantasia": "Limpa Limpeza",
+            "nomeempresarial": "Limpa - empresa de limpezas ltda.",
+            "cnpj": "222.123.456/0001-78",
+            "abertura": "17/10/1990",
+            "endereco": "rua vinte de setembro, 200",
+            "telefone": "(51) 3333-4444",
+            "natureza": "Prestação de serviços de limpeza",
+            "atividades": "Limpeza externa e interna de imóveis",
+            "capital": "40.000,00",
+            "situacao": "Pendente"
         }
+        
         
     ]
 }

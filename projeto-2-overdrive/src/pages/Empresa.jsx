@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"
 import Message from "../components/Message";
 
+import './Pessoa.css'
+
 
 const Empresa = () => {
   const [empresas, setEmpresas] = useState([]);
@@ -24,10 +26,10 @@ const Empresa = () => {
   return (
     <div>
 
-        <h1>Empresa</h1>
-        <Message color="success" text="Mensagem de sucesso!"/>
-        <h3>Mostrar tabela de empresas</h3>
-          <Link to="/adicionarempresa"><button type="submit" className="btn btn-primary m-2">Adicionar empresa</button></Link>
+        <h1>Empresas</h1>
+        <Message color="success" text="Mensagem enviada com sucesso!"/>
+        <span className="spanlista">Lista de empresas cadastradas: </span>
+          <Link to="/adicionarempresa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar empresa</button></Link>
         <div className="tabela">
         <table className="table table-hover">
           <thead>
@@ -36,7 +38,7 @@ const Empresa = () => {
               <th scope="col">Nome</th>
               <th scope="col">CNPJ</th>
               <th scope="col">Status</th>
-              <th scope="col">Visualizar</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           {empresas.map((empresa) => (
@@ -46,7 +48,7 @@ const Empresa = () => {
               <td>{empresa.nomefantasia}</td>
               <td>{empresa.cnpj}</td>
               <td>{empresa.situacao}</td>
-              <td><Link to={`/visualizarempresa/${empresa.id}`}><button type="button" className="btn btn-light">Light</button></Link></td>
+              <td><Link to={`/visualizarempresa/${empresa.id}`}><button type="button" className="btn btncor">Visualizar</button></Link></td>
             </tr>
           </tbody>
           ))}

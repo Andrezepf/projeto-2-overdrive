@@ -9,7 +9,7 @@ const VisualizarPessoa = () => {
     return (
         <div id="edit-profile">
           <h2>Informações da pessoa: </h2>
-            <Message color="success" text="Mensagem de sucesso!"/>
+            <Message color="success" text="Mensagem enviada com sucesso!"/>
           <form>
             <div className="mb-3">
               <label className="form-label">ID:</label>
@@ -40,9 +40,9 @@ const VisualizarPessoa = () => {
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
           </select>
-            <Link to="/editarpessoa/1"><button type="submit" className="btn btn-primary m-2">Editar</button></Link>
-            <Link to="/pessoa"><button type="submit" className="btn btn-primary m-2">Excluir</button></Link>
-            <Link to="/pessoa"><button type="submit" className="btn btn-primary m-2">Voltar</button></Link>
+            <Link to="/editarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Editar</button></Link>
+            <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Excluir</button></Link>
+            <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
           </form>
         </div>
     )

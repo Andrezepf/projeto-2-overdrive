@@ -53,8 +53,8 @@ const EditarEmpresa = () => {
             <option placeholder="2">Inativo</option>
             <option placeholder="3">Pendente</option>
           </select>
-          <Link to="/visualizarempresa/1"><button type="submit" className="btn btn-primary m-2">Salvar</button></Link>
-          <Link to="/visualizarempresa/1"><button type="submit" className="btn btn-primary m-2">Voltar</button></Link>
+          <Link to="/visualizarempresa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Salvar</button></Link>
+          <Link to="/visualizarempresa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
           </form>
         </div>
     )

@@ -7,7 +7,7 @@ function Message({color, text}) {
   if (show) {
     return (
       <Alert variant={color} onClose={() => setShow(false)} dismissible>
-        <p>{text}</p>
+        <p className='message'>{text}</p>
       </Alert>
     );
   }
