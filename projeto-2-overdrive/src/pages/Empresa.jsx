@@ -29,7 +29,7 @@ const Empresa = () => {
         <h1>Empresas</h1>
         <Message color="success" text="Mensagem enviada com sucesso!"/>
         <span className="spanlista">Lista de empresas cadastradas: </span>
-          <Link to="/adicionarempresa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar empresa</button></Link>
+          <Link to="/empresa/adicionarempresa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar empresa</button></Link>
         <div className="tabela">
         <table className="table table-hover">
           <thead>
@@ -48,13 +48,13 @@ const Empresa = () => {
               <td>{empresa.nomefantasia}</td>
               <td>{empresa.cnpj}</td>
               <td>{empresa.situacao}</td>
-              <td><Link to={`/visualizarempresa/${empresa.id}`}><button type="button" className="btn btncor">Visualizar</button></Link></td>
+              <td><Link to={`/empresa/visualizarempresa/${empresa.id}`}><button type="button" className="btn btncor">Visualizar</button></Link></td>
             </tr>
           </tbody>
           ))}
         </table>
         </div>
-
+            
     </div>
   )
 }

@@ -18,7 +18,7 @@ const EditarPessoa = () => {
             </div>
             <div className="mb-3">
               <label className="form-label">Telefone:</label>
-              <input type="text" className="form-control" placeholder='33333333'/>
+              <input type="text" className="form-control" placeholder='(19)3333-3333'/>
             </div>
             <div className="mb-3">
               <label className="form-label">Usuário:</label>
@@ -33,8 +33,8 @@ const EditarPessoa = () => {
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
           </select>
-          <Link to="/visualizarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Salvar</button></Link>
-          <Link to="/visualizarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
+          <Link to="/pessoa/visualizarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Salvar</button></Link>
+          <Link to="/pessoa/visualizarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
           </form>
         </div>
     )

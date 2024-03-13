@@ -28,7 +28,7 @@ const Pessoa = () => {
         <h1>Pessoas</h1>
         <Message color="success" text="Mensagem enviada com sucesso!"/>
         <span className="spanlista">Lista de pessoas cadastradas: </span>
-            <Link to="/adicionarpessoa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar pessoa</button></Link>
+            <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar pessoa</button></Link>
 
 
         <div className="tabela">
@@ -49,7 +49,7 @@ const Pessoa = () => {
                 <td>{pessoa.nome}</td>
                 <td>{pessoa.cpf}</td>
                 <td>{pessoa.situacao}</td>
-                <td><Link to={`/visualizarpessoa/${pessoa.id}`} ><button type="button" className="btn btncor">Visualizar</button></Link></td>
+                <td><Link to={`/pessoa/visualizarpessoa/${pessoa.id}`} ><button type="button" className="btn btncor">Visualizar</button></Link></td>
               </tr>
               
             </tbody>
@@ -57,7 +57,6 @@ const Pessoa = () => {
           </table>
         </div>
         
-
     </div>
   )
 }

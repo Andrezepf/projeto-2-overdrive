@@ -17,11 +17,14 @@ import VisualizarPessoa from './pages/VisualizarPessoa.jsx'
 import EditarPessoa from './pages/EditarPessoa.jsx'
 import VisualizarEmpresa from './pages/VisualizarEmpresa.jsx'
 import EditarEmpresa from './pages/EditarEmpresa.jsx'
+import ScrollToTop from './Hooks/ScrollToTop.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    
     <BrowserRouter>
+    <ScrollToTop/>
     <Navbar/>
       <div className="container">
         <Routes>
@@ -30,13 +33,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path='/index' element={<Index/>}/>
               <Route path='/empresa' element={<Empresa/>}/>
               <Route path='/pessoa' element={<Pessoa/>}/>
-              <Route path='/adicionarpessoa' element={<AddPessoa/>}/>
-              <Route path='/adicionarempresa' element={<AddEmpresa/>}/>
-              <Route path='/visualizarpessoa/:id' element={<VisualizarPessoa/>}/>
-              <Route path='/editarpessoa/:id' element={<EditarPessoa/>}/>
-              <Route path='/visualizarempresa/:id' element={<VisualizarEmpresa/>}/>
-              <Route path='/editarempresa/:id' element={<EditarEmpresa/>}/>
-            </Route>  
+              <Route path='/pessoa/adicionarpessoa' element={<AddPessoa/>}/>
+              <Route path='/empresa/adicionarempresa' element={<AddEmpresa/>}/>
+              <Route path='/pessoa/visualizarpessoa/:id' element={<VisualizarPessoa/>}/>
+              <Route path='/pessoa/editarpessoa/:id' element={<EditarPessoa/>}/>
+              <Route path='/empresa/visualizarempresa/:id' element={<VisualizarEmpresa/>}/>
+              <Route path='/empresa/editarempresa/:id' element={<EditarEmpresa/>}/>
+            </Route>              
         </Routes>
       </div>
       <Footer/>

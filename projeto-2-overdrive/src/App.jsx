@@ -3,10 +3,8 @@ import { Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
-  
-
-  return (
-    <div id='corpo'>
+  return (  
+    <div id='corpo'>     
       <Outlet/>
     </div>
   )
