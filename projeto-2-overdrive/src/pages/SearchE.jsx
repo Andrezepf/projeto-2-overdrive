@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import './Pessoa.css'
 import Message from "../components/Message";
 
-import './Pessoa.css'
 
-
-const Empresa = () => {
+const SearchE = () => {
   const [empresas, setEmpresas] = useState([]);
 
   const getData = () => {
@@ -24,7 +23,6 @@ const Empresa = () => {
     getData();
   }, []);
 
-
   const [search, setSearch] = useState("")
 
   const navigate = useNavigate()
@@ -39,10 +37,12 @@ const Empresa = () => {
 
 
   }
+
+  
   return (
     <div>
 
-        <h1>Empresas</h1>
+<h1>Empresas</h1>
         <Message color="success" text="Mensagem enviada com sucesso!"/>
         <span className="spanlista">Lista de empresas cadastradas: </span>
           <Link to="/empresa/adicionarempresa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar empresa</button></Link>
@@ -50,6 +50,8 @@ const Empresa = () => {
             <input className="input-search" type="text" placeholder="Pesquisar" onChange={(e) => setSearch(e.target.value)} value={search}/>
             <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
           </form>
+
+
         <div className="tabela">
         <table className="table table-hover">
           <thead>
@@ -72,11 +74,11 @@ const Empresa = () => {
             </tr>
           </tbody>
           ))}
-        </table>
+          </table>
         </div>
-            
+        
     </div>
   )
 }
 
-export default Empresa
+export default SearchE

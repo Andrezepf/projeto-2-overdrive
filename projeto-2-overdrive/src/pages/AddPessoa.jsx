@@ -49,7 +49,7 @@ const AddPessoa = () => {
             <option value="1" selected>Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
-          </select>
+            </select>
             <label className="form-label">Empresa:</label>
             <select class="form-select" aria-label="Default select example">
             {empresas.map((empresa) => (

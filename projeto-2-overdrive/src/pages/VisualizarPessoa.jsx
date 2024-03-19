@@ -39,7 +39,11 @@ const VisualizarPessoa = () => {
             <option value="1" selected>Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
-          </select>
+            </select>
+            <label className="form-label">Empresa:</label>
+            <select class="form-select" aria-label="Default select example" disabled>
+            <option value="1" selected>Test Company</option>
+            </select>
             <Link to="/pessoa/editarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Editar</button></Link>
             <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Excluir</button></Link>
             <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
