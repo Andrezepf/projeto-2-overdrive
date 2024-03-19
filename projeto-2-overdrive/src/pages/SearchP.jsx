@@ -4,7 +4,7 @@ import './Pessoa.css'
 import Message from "../components/Message";
 
 
-const Pessoa = () => {
+const SearchP = () => {
   const [pessoas, setPessoas] = useState([]);
 
   const getData = () => {
@@ -64,7 +64,6 @@ const Pessoa = () => {
                 <th scope="col">Ações</th>
               </tr>
             </thead>
-        
         {pessoas.map((pessoa) => (
             <tbody>
               <tr>
@@ -85,4 +84,4 @@ const Pessoa = () => {
   )
 }
 
-export default Pessoa
+export default SearchP

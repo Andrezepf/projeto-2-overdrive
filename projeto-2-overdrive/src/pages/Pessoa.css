@@ -31,3 +31,9 @@ h1 {
 h1 {
     margin-bottom: 10px;
 }
+
+.input-search {
+    height: 35px;
+    width: 300px;
+    margin: 5px;
+}
