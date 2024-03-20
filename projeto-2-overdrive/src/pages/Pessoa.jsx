@@ -4,6 +4,7 @@ import './Pessoa.css'
 import Message from "../components/Message";
 
 
+
 const Pessoa = () => {
   const [pessoas, setPessoas] = useState([]);
 
@@ -53,7 +54,7 @@ const Pessoa = () => {
 
 
         <div className="tabela">
-          <table className="table table-hover">
+          <table className="table table-hover table-bordered">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -66,7 +67,7 @@ const Pessoa = () => {
             </thead>
         
         {pessoas.map((pessoa) => (
-            <tbody>
+            <tbody key={pessoa.id}>
               <tr>
                 <td scope="row">{pessoa.id}</td>
                 <td>{pessoa.nome}</td>

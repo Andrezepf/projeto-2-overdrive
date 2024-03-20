@@ -1,4 +1,5 @@
 import React from 'react'
+import { IMaskInput } from 'react-imask'
 import { Link } from 'react-router-dom'
 
 
@@ -18,11 +19,11 @@ const EditarEmpresa = () => {
             </div>
             <div className="mb-3">
               <label className="form-label">CNPJ:</label>
-              <input type="text" className="form-control" placeholder='333.444.555/0001-66'/>
+              <IMaskInput className="form-control" mask="000.000.000/0000-00" placeholder='333.444.555/0001-66' />
             </div>
             <div className="mb-3">
               <label className="form-label">Data de abertura:</label>
-              <input type="text" className="form-control" placeholder='13/12/2001'/>
+              <IMaskInput className="form-control" mask="00/00/0000" placeholder='13/12/2001' />
             </div>
             <div className="mb-3">
               <label className="form-label">Endereço:</label>
@@ -30,7 +31,7 @@ const EditarEmpresa = () => {
             </div>
             <div className="mb-3">
               <label className="form-label">Telefone:</label>
-              <input type="text" className="form-control" placeholder='(19)3333-3333'/>
+              <IMaskInput className="form-control" mask="(00) 00000-0000" placeholder='(19) 3333-3333' />
             </div>
             <div className="mb-3">
               <label className="form-label">Natureza jurídica:</label>
@@ -42,14 +43,15 @@ const EditarEmpresa = () => {
             </div>
             <div className="mb-3">
               <label className="form-label">Capital:</label>
-              <input type="text" className="form-control" placeholder='350.000,00'/>
+              <input type="text" className="form-control" placeholder='350000,00'/>
+              <IMaskInput className="form-control" mask={Number} placeholder='350000,00' />
             </div>
             
 
               
             <label className="form-label">Situação cadastral:</label>
-            <select class="form-select" aria-label="Default select example">
-            <option placeholder="1" selected>Ativo</option>
+            <select className="form-select" aria-label="Default select example">
+            <option placeholder="1">Ativo</option>
             <option placeholder="2">Inativo</option>
             <option placeholder="3">Pendente</option>
           </select>

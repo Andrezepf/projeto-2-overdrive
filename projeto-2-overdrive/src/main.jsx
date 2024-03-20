@@ -8,7 +8,6 @@ import './index.css'
 import Pessoa from './pages/Pessoa.jsx'
 import Empresa from './pages/Empresa.jsx'
 import Home from './pages/Home.jsx'
-import Index from './pages/Index.jsx'
 import AddPessoa from './pages/AddPessoa.jsx'
 import AddEmpresa from './pages/AddEmpresa.jsx'
 import Footer from './components/Footer.jsx'
@@ -32,7 +31,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
             <Route element={<App/>}>
               <Route path='/' element={<Home/>}/>
-              <Route path='/index' element={<Index/>}/>
               <Route path='/empresa' element={<Empresa/>}/>
               <Route path='/pessoa' element={<Pessoa/>}/>
               <Route path='/pessoa/adicionarpessoa' element={<AddPessoa/>}/>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import {IMaskInput} from 'react-imask'
 
 const AddPessoa = () => {
   const [empresas, setEmpresas] = useState([]);
@@ -31,11 +32,11 @@ const AddPessoa = () => {
             </div>
             <div className="mb-3">
               <label className="form-label">CPF:</label>
-              <input type="text" className="form-control" placeholder='Insira o CPF...'/>
+              <IMaskInput className="form-control" mask="000.000.000-00" placeholder='Insira o CPF...' />
             </div>
             <div className="mb-3">
               <label className="form-label">Telefone:</label>
-              <input type="text" className="form-control" placeholder='Insira o telefone...'/>
+              <IMaskInput className="form-control" mask="(00) 00000-0000" placeholder='Insira o telefone...' />
             </div>
             <div className="mb-3">
               <label className="form-label">Usuário:</label>
@@ -45,15 +46,15 @@ const AddPessoa = () => {
 
               
             <label className="form-label">Situação:</label>
-            <select class="form-select" aria-label="Default select example">
-            <option value="1" selected>Ativo</option>
+            <select className="form-select" aria-label="Default select example">
+            <option value="1">Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
             </select>
             <label className="form-label">Empresa:</label>
-            <select class="form-select" aria-label="Default select example">
+            <select className="form-select" aria-label="Default select example">
             {empresas.map((empresa) => (
-              <option value={empresa.id}>{empresa.nomefantasia}</option>
+              <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
             ))}
             
           </select>

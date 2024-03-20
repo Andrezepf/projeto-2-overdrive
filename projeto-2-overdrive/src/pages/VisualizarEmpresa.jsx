@@ -54,13 +54,13 @@ const VisualizarEmpresa = () => {
 
               
             <label className="form-label">Situação cadastral:</label>
-            <select class="form-select" aria-label="Default select example" disabled>
-            <option value="1" selected>Ativo</option>
+            <select className="form-select" aria-label="Default select example" disabled>
+            <option value="1">Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
           </select>
           <Link to="/empresa/editarempresa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Editar</button></Link>
-            <Link to="/empresa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Excluir</button></Link>
+            <Link to="/empresa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg" onClick={() => {if(window.confirm('Tem certeza que deseja excluir essa empresa?'));}}>Excluir</button></Link>
             <Link to="/empresa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
           </form>
         </div>

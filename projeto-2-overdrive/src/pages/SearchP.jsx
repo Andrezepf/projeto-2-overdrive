@@ -29,8 +29,8 @@ const SearchP = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
-    if(!search) return
+
+    if (!search) return
 
     navigate(`/pessoa/search?q=${search}`)
     setSearch("")
@@ -38,34 +38,34 @@ const SearchP = () => {
 
   }
 
-  
+
   return (
     <div>
 
-        <h1>Pessoas</h1>
-        <Message color="success" text="Mensagem enviada com sucesso!"/>
-        <span className="spanlista">Lista de pessoas cadastradas: </span>
-        <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar pessoa</button></Link>
-        <form onSubmit={handleSubmit}>
-            <input className="input-search" type="text" placeholder="Pesquisar" onChange={(e) => setSearch(e.target.value)} value={search}/>
-            <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
-        </form>
+      <h1>Pessoas</h1>
+      <Message color="success" text="Mensagem enviada com sucesso!" />
+      <span className="spanlista">Lista de pessoas cadastradas: </span>
+      <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar pessoa</button></Link>
+      <form onSubmit={handleSubmit}>
+        <input className="input-search" type="text" placeholder="Pesquisar" onChange={(e) => setSearch(e.target.value)} value={search} />
+        <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
+      </form>
 
 
-        <div className="tabela">
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">CPF</th>
-                <th scope="col">Empresa</th>
-                <th scope="col">Status</th>
-                <th scope="col">Ações</th>
-              </tr>
-            </thead>
-        {pessoas.map((pessoa) => (
-            <tbody>
+      <div className="tabela">
+        <table className="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Nome</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Empresa</th>
+              <th scope="col">Status</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          {pessoas.map((pessoa) => (
+            <tbody  key={pessoa.id}>
               <tr>
                 <td scope="row">{pessoa.id}</td>
                 <td>{pessoa.nome}</td>
@@ -74,12 +74,12 @@ const SearchP = () => {
                 <td>{pessoa.situacao}</td>
                 <td><Link to={`/pessoa/visualizarpessoa/${pessoa.id}`} ><button type="button" className="btn btncor">Visualizar</button></Link></td>
               </tr>
-              
+
             </tbody>
           ))}
-          </table>
-        </div>
-        
+        </table>
+      </div>
+
     </div>
   )
 }

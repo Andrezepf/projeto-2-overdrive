@@ -51,7 +51,7 @@ const Empresa = () => {
             <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
           </form>
         <div className="tabela">
-        <table className="table table-hover">
+        <table className="table table-hover table-bordered">
           <thead>
             <tr>
               <th scope="col">ID</th>
@@ -62,7 +62,7 @@ const Empresa = () => {
             </tr>
           </thead>
           {empresas.map((empresa) => (
-          <tbody>
+          <tbody key={empresa.id}>
             <tr>
               <td scope="row">{empresa.id}</td>
               <td>{empresa.nomefantasia}</td>

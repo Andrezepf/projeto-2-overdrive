@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { IMaskInput } from 'react-imask';
 import { Link } from 'react-router-dom'
 
 
@@ -31,11 +32,11 @@ const EditarPessoa = () => {
             </div>
             <div className="mb-3">
               <label className="form-label">CPF:</label>
-              <input type="text" className="form-control" placeholder='454.656.232-88'/>
+              <IMaskInput className="form-control" mask="000.000.000-00" placeholder='454.656.232-88' />
             </div>
             <div className="mb-3">
               <label className="form-label">Telefone:</label>
-              <input type="text" className="form-control" placeholder='(19)3333-3333'/>
+              <IMaskInput className="form-control" mask="(00) 00000-0000" placeholder='(19) 3333-3333' />
             </div>
             <div className="mb-3">
               <label className="form-label">Usuário:</label>
@@ -45,15 +46,15 @@ const EditarPessoa = () => {
 
               
             <label className="form-label">Situação:</label>
-            <select class="form-select" aria-label="Default select example">
-            <option value="1" selected>Ativo</option>
+            <select className="form-select" aria-label="Default select example">
+            <option value="1">Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
             </select>
             <label className="form-label">Empresa:</label>
-            <select class="form-select" aria-label="Default select example">
+            <select className="form-select" aria-label="Default select example">
             {empresas.map((empresa) => (
-              <option value={empresa.id}>{empresa.nomefantasia}</option>
+              <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
             ))}           
             </select>
             <Link to="/pessoa/visualizarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Salvar</button></Link>

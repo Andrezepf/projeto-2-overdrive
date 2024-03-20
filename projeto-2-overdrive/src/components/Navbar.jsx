@@ -6,7 +6,7 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark navcor">
         <div className="container-fluid">
-          <Link to="/index" className="text-link" id="seulogo"></Link>
+          <Link to="/" className="text-link" id="seulogo"></Link>
 
           
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ul ">
