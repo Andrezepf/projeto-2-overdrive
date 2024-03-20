@@ -48,7 +48,7 @@ const Pessoa = () => {
         <span className="spanlista">Lista de pessoas cadastradas: </span>
         <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar pessoa</button></Link>
         <form onSubmit={handleSubmit}>
-            <input className="input-search" type="text" placeholder="Pesquisar" onChange={(e) => setSearch(e.target.value)} value={search}/>
+            <input className="input-search" type="text" placeholder="Pesquisar..." onChange={(e) => setSearch(e.target.value)} value={search}/>
             <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
         </form>
 

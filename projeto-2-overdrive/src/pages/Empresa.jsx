@@ -47,7 +47,7 @@ const Empresa = () => {
         <span className="spanlista">Lista de empresas cadastradas: </span>
           <Link to="/empresa/adicionarempresa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar empresa</button></Link>
           <form onSubmit={handleSubmit}>
-            <input className="input-search" type="text" placeholder="Pesquisar" onChange={(e) => setSearch(e.target.value)} value={search}/>
+            <input className="input-search" type="text" placeholder="Pesquisar..." onChange={(e) => setSearch(e.target.value)} value={search}/>
             <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
           </form>
         <div className="tabela">
