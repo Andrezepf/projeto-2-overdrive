@@ -1,61 +1,216 @@
 import React from 'react'
 import { IMaskInput } from 'react-imask'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import './AddEmpresa.css'
 
 const AddEmpresa = () => {
-  return (
-    <div id="edit-profile">
-          <h2>Informações da empresa: </h2>
-          <form>
-            <div className="mb-3">
-              <label className="form-label">Nome Empresarial:</label>
-              <input type="text" className="form-control" placeholder='Insira o nome empresarial...'/>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Nome Fantasia:</label>
-              <input type="text" className="form-control" placeholder='Insira o nome fantasia...'/>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">CNPJ:</label>
-              <IMaskInput className="form-control" mask="000.000.000/0000-00" placeholder='Insira o CNPJ...' />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Data de abertura:</label>
-              <IMaskInput className="form-control" mask="00/00/0000" placeholder='Insira a data de abertura da empresa...' />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Endereço:</label>
-              <input type="text" className="form-control" placeholder='Insira o endereço...'/>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Telefone:</label>
-              <IMaskInput className="form-control" mask="(00) 00000-0000" placeholder='Insira o telefone...' />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Natureza jurídica:</label>
-              <input type="text" className="form-control" placeholder='Insira a natureza jurídica da empresa...'/>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Atividades Econômicas:</label>
-              <input type="text" className="form-control" placeholder='Insira as ativadades econômicas...'/>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Capital:</label>
-              <IMaskInput className="form-control" mask={Number} placeholder='Insira o capital...' />
-            </div>
-            
+  const { register, setValue, setFocus } = useForm();
+  const checkCEP = (e) => {
+    const cep = e.target.value.replace(/\D/g, '');
+    //console.log(cep);
+    if (cep.length === 8) {
 
-              
-            <label className="form-label">Situação cadastral:</label>
-            <select className="form-select" aria-label="Default select example">
+      fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
+        console.log(data);
+        // register({ name: 'address', value: data.logradouro });
+        setValue('address', data.logradouro);
+        setValue('neighborhood', data.bairro);
+        setValue('city', data.localidade);
+        setValue('uf', data.uf);
+        setFocus('addressNumber');
+
+      });
+    }
+  }
+
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    navigate("/empresa")
+  }
+
+
+  return (
+    <div id="order-form-container" className="my-md-4 px-md-0">
+      <h2>Informações da empresa: </h2>
+      <form id="address-form" onSubmit={handleSubmit}>
+        <div className="row mb-3">
+          <div className="mb-3 form-floating">
+            <input type="text" className="form-control shadow-none" placeholder='Insira o nome empresarial...' minLength={3} maxLength={255} required />
+            <label className="form-label">Nome Empresarial:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <input type="text" className="form-control shadow-none" placeholder='Insira o nome fantasia...' minLength={3} maxLength={255} required />
+            <label htmlFor='nomefantasia'>Nome Fantasia:</label>
+          </div>
+          <div className="col-12 col-sm-6 mb-3 form-floating">
+            <IMaskInput className="form-control shadow-none" mask="000.000.000/0000-00" placeholder='Insira o CNPJ...' minLength={19} maxLength={19} data-input required />
+            <label htmlFor="cnpj">CNPJ:</label>
+          </div>
+          <div className="col-12 col-sm-6 form-floating">
+            <input type='date' className="form-control" placeholder='Insira a data de abertura da empresa...' required />
+            <label className="form-label">Data de abertura:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <IMaskInput
+              mask="00000-000"
+              type="text"
+              className="form-control shadow-none"
+              id="cep"
+              name="cep"
+              placeholder="CEP"
+              maxLength={9}
+              minLength={9}
+              required
+              onKeyUp={checkCEP}
+            />
+            <label htmlFor="cep">CEP:</label>
+          </div>
+          <div className="col-12 col-sm-6 mb-3 form-floating">
+            <input
+              {...register("address")}
+              type="text"
+              className="form-control shadow-none"
+              id="address"
+              name="address"
+              placeholder="Rua"
+              disabled
+              required
+              data-input
+            />
+            <label htmlFor="address" >Rua</label>
+          </div>
+          <div className="col-12 col-sm-6 form-floating">
+            <input
+              {...register("addressNumber")}
+              type="text"
+              className="form-control shadow-none"
+              id="number"
+              name="number"
+              placeholder="Digite o número da residência"
+
+              required
+              data-input
+            />
+            <label htmlFor="number">Número da residência:</label>
+          </div>
+          <div className="col-12 col-sm-6 mb-3 form-floating">
+            <input
+              type="text"
+              className="form-control shadow-none"
+              id="complement"
+              name="complement"
+              placeholder="Digite o complemento (opcional)"
+              data-input
+            />
+            <label htmlFor="complement">Complemento (opcional):</label>
+          </div>
+          <div className="col-12 col-sm-6 form-floating">
+            <input
+              {...register("neighborhood")}
+              type="text"
+              className="form-control shadow-none"
+              id="neighborhood"
+              name="neighborhood"
+              placeholder="Bairro"
+              disabled
+              required
+              data-input
+            />
+            <label htmlFor="neighborhood">Bairro</label>
+          </div>
+          <div className="col-12 col-sm-6 mb-3 form-floating">
+            <input
+              {...register("city")}
+              type="text"
+              className="form-control shadow-none"
+              id="city"
+              name="city"
+              placeholder="Cidade"
+              disabled
+              required
+              data-input
+            />
+            <label htmlFor="city">Cidade</label>
+          </div>
+          <div className="col-12 col-sm-6 mb-3">
+            <select
+              {...register("uf")}
+              className="form-select shadow-none"
+
+              disabled
+              required
+              data-input
+            >
+              <option>Estado</option>
+              <option value="AC">Acre</option>
+              <option value="AL">Alagoas</option>
+              <option value="AP">Amapá</option>
+              <option value="AM">Amazonas</option>
+              <option value="BA">Bahia</option>
+              <option value="CE">Ceará</option>
+              <option value="DF">Distrito Federal</option>
+              <option value="ES">Espírito Santo</option>
+              <option value="GO">Goiás</option>
+              <option value="MA">Maranhão</option>
+              <option value="MT">Mato Grosso</option>
+              <option value="MS">Mato Grosso do Sul</option>
+              <option value="MG">Minas Gerais</option>
+              <option value="PA">Pará</option>
+              <option value="PB">Paraíba</option>
+              <option value="PR">Paraná</option>
+              <option value="PE">Pernambuco</option>
+              <option value="PI">Piauí</option>
+              <option value="RJ">Rio de Janeiro</option>
+              <option value="RN">Rio Grande do Norte</option>
+              <option value="RS">Rio Grande do Sul</option>
+              <option value="RO">Rondônia</option>
+              <option value="RR">Roraima</option>
+              <option value="SC">Santa Catarina</option>
+              <option value="SP">São Paulo</option>
+              <option value="SE">Sergipe</option>
+              <option value="TO">Tocantins</option>
+            </select>
+          </div>
+
+
+
+
+
+          <div className="mb-3 form-floating">
+            <IMaskInput className="form-control shadow-none" mask="(00) 00000-0000" placeholder='Insira o telefone...' minLength={15} maxLength={15} required />
+            <label className="form-label">Telefone:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <input type="text" className="form-control shadow-none" placeholder='Insira a natureza jurídica da empresa...' minLength={3} maxLength={255} required />
+            <label className="form-label">Natureza jurídica:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <input type="text" className="form-control shadow-none" placeholder='Insira as ativadades econômicas...' minLength={3} maxLength={255} required />
+            <label className="form-label">Atividades Econômicas:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <IMaskInput className="form-control shadow-none" mask={Number} placeholder='Insira o capital...' minLength={3} maxLength={15} required />
+            <label className="form-label">Capital:</label>
+          </div>
+
+
+          <div className="mb-3">
+
+          <label className="form-label">Situação cadastral:</label>
+          <select className="form-select shadow-none" aria-label="Default select example" required>
             <option value="1">Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
           </select>
-          <Link to="/empresa"><button type="submit" className="btn btncor m-2">Criar</button></Link>
-          <Link to="/empresa"><button type="submit" className="btn btncor m-2">Voltar</button></Link>
-          </form>
+          </div>
         </div>
+        <button type="submit" className="btn btncor m-2">Criar</button>
+        <Link to="/empresa"><button type="submit" className="btn btncor m-2">Voltar</button></Link>
+      </form>
+    </div>
   )
 }
 
