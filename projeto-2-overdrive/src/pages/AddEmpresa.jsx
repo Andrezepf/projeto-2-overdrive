@@ -13,13 +13,24 @@ const AddEmpresa = () => {
 
       fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
         console.log(data);
-        // register({ name: 'address', value: data.logradouro });
-        setValue('address', data.logradouro);
-        setValue('neighborhood', data.bairro);
-        setValue('city', data.localidade);
-        setValue('uf', data.uf);
-        setFocus('addressNumber');
+        if (data.erro) {
+          window.alert("CEP inválido, tente novamente!")
+          document.getElementById('cep').value=''
+          setFocus('cep')
+          setValue('address', data.logradouro);
+          setValue('neighborhood', data.bairro);
+          setValue('city', data.localidade);
+          setValue('uf', "NN");
+        } else {
 
+          // register({ name: 'address', value: data.logradouro });
+          setValue('address', data.logradouro);
+          setValue('neighborhood', data.bairro);
+          setValue('city', data.localidade);
+          setValue('uf', data.uf);
+          setFocus('addressNumber');
+        }
+          
       });
     }
   }
@@ -38,19 +49,19 @@ const AddEmpresa = () => {
       <form id="address-form" onSubmit={handleSubmit}>
         <div className="row mb-3">
           <div className="mb-3 form-floating">
-            <input type="text" className="form-control shadow-none" placeholder='Insira o nome empresarial...' minLength={3} maxLength={255} required />
+            <input type="text" className="form-control shadow-none" placeholder='Insira o nome empresarial...' minLength={5} maxLength={255} required />
             <label className="form-label">Nome Empresarial:</label>
           </div>
           <div className="mb-3 form-floating">
-            <input type="text" className="form-control shadow-none" placeholder='Insira o nome fantasia...' minLength={3} maxLength={255} required />
-            <label htmlFor='nomefantasia'>Nome Fantasia:</label>
+            <input type="text" className="form-control shadow-none" placeholder='Insira o nome fantasia...' minLength={5} maxLength={255} required />
+            <label className='form-label'>Nome Fantasia:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
             <IMaskInput className="form-control shadow-none" mask="000.000.000/0000-00" placeholder='Insira o CNPJ...' minLength={19} maxLength={19} data-input required />
             <label htmlFor="cnpj">CNPJ:</label>
           </div>
           <div className="col-12 col-sm-6 form-floating">
-            <input type='date' className="form-control" placeholder='Insira a data de abertura da empresa...' required />
+            <input type='date' className="form-control shadow-none" placeholder='Insira a data de abertura da empresa...' required />
             <label className="form-label">Data de abertura:</label>
           </div>
           <div className="mb-3 form-floating">
@@ -139,12 +150,12 @@ const AddEmpresa = () => {
             <select
               {...register("uf")}
               className="form-select shadow-none"
-
+              
               disabled
               required
               data-input
             >
-              <option>Estado</option>
+              <option value="NN">Estado</option>
               <option value="AC">Acre</option>
               <option value="AL">Alagoas</option>
               <option value="AP">Amapá</option>
@@ -175,10 +186,6 @@ const AddEmpresa = () => {
             </select>
           </div>
 
-
-
-
-
           <div className="mb-3 form-floating">
             <IMaskInput className="form-control shadow-none" mask="(00) 00000-0000" placeholder='Insira o telefone...' minLength={15} maxLength={15} required />
             <label className="form-label">Telefone:</label>
@@ -199,16 +206,16 @@ const AddEmpresa = () => {
 
           <div className="mb-3">
 
-          <label className="form-label">Situação cadastral:</label>
-          <select className="form-select shadow-none" aria-label="Default select example" required>
-            <option value="1">Ativo</option>
-            <option value="2">Inativo</option>
-            <option value="3">Pendente</option>
-          </select>
+            <label className="form-label">Situação cadastral:</label>
+            <select className="form-select shadow-none" aria-label="Default select example" required>
+              <option value="1">Ativo</option>
+              <option value="2">Inativo</option>
+              <option value="3">Pendente</option>
+            </select>
           </div>
         </div>
-        <button type="submit" className="btn btncor m-2">Criar</button>
-        <Link to="/empresa"><button type="submit" className="btn btncor m-2">Voltar</button></Link>
+        <button type="submit" className="btn btncor m-2 mt-1 btn-lg">Criar</button>
+        <Link to="/empresa"><button type="submit" className="btn btncor m-2 mt-1 btn-lg">Voltar</button></Link>
       </form>
     </div>
   )

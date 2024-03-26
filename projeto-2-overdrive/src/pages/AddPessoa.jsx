@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import {IMaskInput} from 'react-imask'
+import { Link, useNavigate } from 'react-router-dom'
+import { IMaskInput } from 'react-imask'
+import validarCpf from 'validar-cpf'
+import { useForm } from 'react-hook-form'
+
+import './AddEmpresa.css'
 
 const AddPessoa = () => {
   const [empresas, setEmpresas] = useState([]);
@@ -21,47 +25,78 @@ const AddPessoa = () => {
     getData();
   }, []);
 
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    navigate("/pessoa")
+  }
+
+ 
+
+  const { register, setValue, setFocus } = useForm();
+ const valCpf = (e) => {
+  const cpf = e.target.value.replace(/\D/g, '');
+  if (cpf.length === 11) {
+
+    console.log(cpf);
+    const newcpf = validarCpf(cpf)
+    
+    if (newcpf) {
+      console.log("valido")
+    } else {
+      console.log("invalido")
+      window.alert("CPF INVÁLIDO! Favor inserir um cpf válido.")
+      document.getElementById('cpf').value=''
+    }
+  }
+}
+
 
   return (
-    <div id="edit-profile">
-          <h2>Informações da pessoa: </h2>
-          <form>
-            <div className="mb-3">
-              <label className="form-label">Nome:</label>
-              <input type="text" className="form-control" placeholder='Insira o nome...'/>
-            </div>
-            <div className="mb-3">
-              <label className="form-label">CPF:</label>
-              <IMaskInput className="form-control" mask="000.000.000-00" placeholder='Insira o CPF...' />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Telefone:</label>
-              <IMaskInput className="form-control" mask="(00) 00000-0000" placeholder='Insira o telefone...' />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Usuário:</label>
-              <input type="text" className="form-control" placeholder='Insira o usuário...'/>
-            </div>
-            
+    <div id="order-form-container" className="my-md-4 px-md-0">
+      <h2>Informações da pessoa: </h2>
+      <form id="address-form" onSubmit={handleSubmit}>
+        <div className='row mb-3'>
+          <div className="mb-3 form-floating">
+            <input type="text" className="form-control shadow-none" placeholder='Insira o nome...' minLength={3} maxLength={255} required />
+            <label className="form-label">Nome:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <IMaskInput className="form-control shadow-none" id='cpf' name='cpf' data-input {...register("cpf")} mask="000.000.000-00" placeholder='Insira o CPF...' onKeyUp={valCpf} minLength={14} maxLength={14} required/>
+            <label className="form-label" htmlFor='cpf'>CPF:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <IMaskInput className="form-control shadow-none" mask="(00) 00000-0000" placeholder='Insira o telefone...' minLength={14} maxLength={15} required />
+            <label className="form-label">Telefone:</label>
+          </div>
+          <div className="mb-3 form-floating">
+            <input type="text" className="form-control shadow-none" placeholder='Insira o usuário...' minLength={5} maxLength={20} required />
+            <label className="form-label">Usuário:</label>
+          </div>
 
-              
-            <label className="form-label">Situação:</label>
-            <select className="form-select" aria-label="Default select example">
+
+          <div className="mb-3">
+
+          <label className="form-label">Situação Cadastral:</label>
+          <select className="form-select shadow-none" defaultValue="2">
             <option value="1">Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
-            </select>
-            <label className="form-label">Empresa:</label>
-            <select className="form-select" aria-label="Default select example">
+          </select>
+          <label className="form-label">Empresa:</label>
+          <select className="form-select shadow-none" aria-label="Default select example">
             {empresas.map((empresa) => (
               <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
-            ))}
-            
+              ))}
+
           </select>
-          <Link to="/pessoa"><button type="submit" className="btn btncor m-2">Criar</button></Link>
-          <Link to="/pessoa"><button type="submit" className="btn btncor m-2">Voltar</button></Link>
-          </form>
+              </div>
         </div>
+              <button type="submit" className="btn btncor m-2 mt-1 btn-lg">Criar</button>
+        <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-1 btn-lg">Voltar</button></Link>
+      </form>
+    </div>
   )
 }
 

@@ -58,7 +58,11 @@
     left: 1em;
   }
   
- 
+
+  #order-form-container label:disabled {
+    color: #000;
+  }
+
   
   /* Responsive */
   @media (min-width: 500px) {
