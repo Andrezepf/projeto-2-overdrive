@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
 import validarCpf from 'validar-cpf'
-import { useForm } from 'react-hook-form'
+
 
 import './AddEmpresa.css'
 
@@ -34,7 +34,7 @@ const AddPessoa = () => {
 
  
 
-  const { register, setValue, setFocus } = useForm();
+ 
  const valCpf = (e) => {
   const cpf = e.target.value.replace(/\D/g, '');
   if (cpf.length === 11) {
@@ -52,6 +52,19 @@ const AddPessoa = () => {
   }
 }
 
+const handlePhone = (e) => {
+  let input = e.target
+  input.value = phoneMask(input.value)
+}
+
+const phoneMask = (value) => {
+  if (!value) return ""
+  value = value.replace(/\D/g,'')
+  value = value.replace(/(\d{2})(\d)/,"($1) $2")
+  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+  return value
+}
+
 
   return (
     <div id="order-form-container" className="my-md-4 px-md-0">
@@ -63,11 +76,11 @@ const AddPessoa = () => {
             <label className="form-label">Nome:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" id='cpf' name='cpf' data-input {...register("cpf")} mask="000.000.000-00" placeholder='Insira o CPF...' onKeyUp={valCpf} minLength={14} maxLength={14} required/>
+            <IMaskInput className="form-control shadow-none" id='cpf' name='cpf' data-input mask="000.000.000-00" placeholder='Insira o CPF...' onKeyUp={valCpf} minLength={14} maxLength={14} required/>
             <label className="form-label" htmlFor='cpf'>CPF:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask="(00) 00000-0000" placeholder='Insira o telefone...' minLength={14} maxLength={15} required />
+            <input className="form-control shadow-none" onKeyUp={handlePhone} placeholder='Insira o telefone...' minLength={14} maxLength={15} required />
             <label className="form-label">Telefone:</label>
           </div>
           <div className="mb-3 form-floating">

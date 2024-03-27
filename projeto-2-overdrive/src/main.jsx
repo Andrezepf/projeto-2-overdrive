@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { ChakraProvider } from "@chakra-ui/react"
 
 import App from './App.jsx'
 import './index.css'
@@ -23,7 +24,8 @@ import SearchE from './pages/SearchE.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    
+    <ChakraProvider>
+
     <BrowserRouter>
     <ScrollToTop/>
     <Navbar/>
@@ -46,5 +48,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </div>
       <Footer/>
     </BrowserRouter>
+    </ChakraProvider>
   </React.StrictMode>,
 )

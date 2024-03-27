@@ -156,7 +156,7 @@ const VisualizarEmpresa = () => {
             <label className="form-label">Atividades Econômicas:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask={Number} value='350000,00' disabled />
+            <input className="form-control shadow-none" value='R$ 350.000,00' disabled />
             <label className="form-label">Capital:</label>
           </div>
 

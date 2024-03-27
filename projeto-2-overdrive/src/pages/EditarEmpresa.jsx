@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import { IMaskInput } from 'react-imask'
 import { Link, useNavigate } from 'react-router-dom'
+import ValidarCnpj from '../Hooks/ValidarCnpj';
 
 
 
@@ -14,13 +15,24 @@ const EditarEmpresa = () => {
 
       fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
         console.log(data);
-        // register({ name: 'address', value: data.logradouro });
-        setValue('address', data.logradouro);
-        setValue('neighborhood', data.bairro);
-        setValue('city', data.localidade);
-        setValue('uf', data.uf);
-        setFocus('addressNumber');
+        if (data.erro) {
+          window.alert("CEP inválido, tente novamente!")
+          document.getElementById('cep').value=''
+          setFocus('cep')
+          setValue('address', data.logradouro);
+          setValue('neighborhood', data.bairro);
+          setValue('city', data.localidade);
+          setValue('uf', "NN");
+        } else {
 
+          // register({ name: 'address', value: data.logradouro });
+          setValue('address', data.logradouro);
+          setValue('neighborhood', data.bairro);
+          setValue('city', data.localidade);
+          setValue('uf', data.uf);
+          setFocus('addressNumber');
+        }
+          
       });
     }
   }
@@ -30,6 +42,53 @@ const EditarEmpresa = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     navigate("/empresa/visualizarempresa/1")
+  }
+
+  const valCnpj = (e) => {
+    const cnpj = e.target.value.replace(/\D/g, '');
+    if (cnpj.length === 14) {
+  
+      console.log(cnpj);
+      const newcnpj = ValidarCnpj(cnpj)
+      
+      if (newcnpj) {
+        console.log("valido")
+      } else {
+        console.log("invalido")
+        window.alert("CNPJ INVÁLIDO! Favor inserir um cnpj válido.")
+        document.getElementById('cnpj').value=''
+      }
+    }
+  }
+
+  const handlePhone = (e) => {
+    let input = e.target
+    input.value = phoneMask(input.value)
+  }
+  
+  const phoneMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{2})(\d)/,"($1) $2")
+    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    return value
+  }
+
+  const mascaraMoeda = (e) => {
+    const onlyDigits = e.target.value
+      .split("")
+      .filter(s => /\d/.test(s))
+      .join("")
+      .padStart(3, "0")
+    const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+    event.target.value = maskCurrency(digitsFloat)
+  }
+  
+  const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency
+    }).format(valor)
   }
 
 
@@ -47,7 +106,7 @@ const EditarEmpresa = () => {
             <label htmlFor='nomefantasia'>Nome Fantasia:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask="000.000.000/0000-00" defaultValue='333.444.555/0001-66' minLength={19} maxLength={19} data-input required />
+            <IMaskInput className="form-control shadow-none" mask="00.000.000/0000-00" name='cnpj' id='cnpj' defaultValue='80.075.560/0001-44' minLength={18} maxLength={18} onKeyUp={valCnpj} data-input required />
             <label htmlFor="cnpj">CNPJ:</label>
           </div>
           <div className="col-12 col-sm-6 form-floating">
@@ -180,7 +239,7 @@ const EditarEmpresa = () => {
           </div>
 
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask="(00) 00000-0000" defaultValue="(19) 99999-3333" minLength={14} maxLength={15} required />
+            <input className="form-control shadow-none" onKeyUp={handlePhone} defaultValue="(19) 99999-3333" minLength={14} maxLength={15} required />
             <label className="form-label">Telefone:</label>
           </div>
           <div className="mb-3 form-floating">
@@ -192,7 +251,7 @@ const EditarEmpresa = () => {
             <label className="form-label">Atividades Econômicas:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask={Number} defaultValue='350000,00' minLength={3} maxLength={15} required />
+            <input className="form-control shadow-none" onInput={mascaraMoeda} defaultValue='R$ 350.000,00' minLength={3} maxLength={18} required />
             <label className="form-label">Capital:</label>
           </div>
 

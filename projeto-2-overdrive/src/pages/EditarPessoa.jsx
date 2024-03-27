@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IMaskInput } from 'react-imask';
 import { Link, useNavigate } from 'react-router-dom'
+import validarCpf from 'validar-cpf';
 
 
 
@@ -30,6 +31,37 @@ const EditarPessoa = () => {
     navigate("/pessoa/visualizarpessoa/1")
   }
 
+
+  const valCpf = (e) => {
+    const cpf = e.target.value.replace(/\D/g, '');
+    if (cpf.length === 11) {
+  
+      console.log(cpf);
+      const newcpf = validarCpf(cpf)
+      
+      if (newcpf) {
+        console.log("valido")
+      } else {
+        console.log("invalido")
+        window.alert("CPF INVÁLIDO! Favor inserir um cpf válido.")
+        document.getElementById('cpf').value=''
+      }
+    }
+  }
+
+  const handlePhone = (e) => {
+    let input = e.target
+    input.value = phoneMask(input.value)
+  }
+  
+  const phoneMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{2})(\d)/,"($1) $2")
+    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    return value
+  }
+
     return (
         <div id="order-form-container" className="my-md-4 px-md-0">
       <h2>Informações da pessoa: </h2>
@@ -40,11 +72,11 @@ const EditarPessoa = () => {
             <label className="form-label">Nome:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask="000.000.000-00" defaultValue='454.656.232-88' minLength={14} maxLength={14} required/>
+            <IMaskInput className="form-control shadow-none" mask="000.000.000-00" name='cpf' id='cpf' defaultValue='454.656.232-88' onKeyUp={valCpf} minLength={14} maxLength={14} required/>
             <label className="form-label">CPF:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask="(00) 00000-0000" defaultValue='(19) 3333-3333' minLength={14} maxLength={15} required />
+            <input className="form-control shadow-none" onKeyUp={handlePhone} defaultValue='(19) 3333-3333' minLength={14} maxLength={15} required />
             <label className="form-label">Telefone:</label>
           </div>
           <div className="mb-3 form-floating">

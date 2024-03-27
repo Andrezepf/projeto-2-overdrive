@@ -2,6 +2,7 @@ import React from 'react'
 import { IMaskInput } from 'react-imask'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import ValidarCnpj from '../Hooks/ValidarCnpj'
 import './AddEmpresa.css'
 
 const AddEmpresa = () => {
@@ -42,6 +43,53 @@ const AddEmpresa = () => {
     navigate("/empresa")
   }
 
+  const valCnpj = (e) => {
+    const cnpj = e.target.value.replace(/\D/g, '');
+    if (cnpj.length === 14) {
+  
+      console.log(cnpj);
+      const newcnpj = ValidarCnpj(cnpj)
+      
+      if (newcnpj) {
+        console.log("valido")
+      } else {
+        console.log("invalido")
+        window.alert("CNPJ INVÁLIDO! Favor inserir um cnpj válido.")
+        document.getElementById('cnpj').value=''
+      }
+    }
+  }
+
+  const handlePhone = (e) => {
+    let input = e.target
+    input.value = phoneMask(input.value)
+  }
+  
+  const phoneMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/\D/g,'')
+    value = value.replace(/(\d{2})(\d)/,"($1) $2")
+    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    return value
+  }
+
+  const mascaraMoeda = (e) => {
+    const onlyDigits = e.target.value
+      .split("")
+      .filter(s => /\d/.test(s))
+      .join("")
+      .padStart(3, "0")
+    const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+    event.target.value = maskCurrency(digitsFloat)
+  }
+  
+  const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency
+    }).format(valor)
+  }
+
 
   return (
     <div id="order-form-container" className="my-md-4 px-md-0">
@@ -57,7 +105,7 @@ const AddEmpresa = () => {
             <label className='form-label'>Nome Fantasia:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask="000.000.000/0000-00" placeholder='Insira o CNPJ...' minLength={19} maxLength={19} data-input required />
+            <IMaskInput className="form-control shadow-none" mask="00.000.000/0000-00" name='cnpj' id='cnpj' placeholder='Insira o CNPJ...' minLength={18} maxLength={18} onKeyUp={valCnpj} required />
             <label htmlFor="cnpj">CNPJ:</label>
           </div>
           <div className="col-12 col-sm-6 form-floating">
@@ -187,7 +235,7 @@ const AddEmpresa = () => {
           </div>
 
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask="(00) 00000-0000" placeholder='Insira o telefone...' minLength={15} maxLength={15} required />
+            <input className="form-control shadow-none" onKeyUp={handlePhone} placeholder='Insira o telefone...' minLength={15} maxLength={15} required />
             <label className="form-label">Telefone:</label>
           </div>
           <div className="mb-3 form-floating">
@@ -199,7 +247,7 @@ const AddEmpresa = () => {
             <label className="form-label">Atividades Econômicas:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" mask={Number} placeholder='Insira o capital...' minLength={3} maxLength={15} required />
+            <input className="form-control shadow-none" onInput={mascaraMoeda} placeholder='Insira o capital...' minLength={3} maxLength={18} required />
             <label className="form-label">Capital:</label>
           </div>
 
