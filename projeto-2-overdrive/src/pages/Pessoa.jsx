@@ -2,6 +2,9 @@ import { Link, useNavigate } from "react-router-dom"
 import React, { useState, useEffect } from "react";
 import './Pessoa.css'
 import Message from "../components/Message";
+import Tabela from "../components/Tabela";
+import { Box, Heading } from "@chakra-ui/react";
+import Tabela2 from "../components/Tabela2";
 
 
 
@@ -81,6 +84,9 @@ const Pessoa = () => {
           ))}
           </table>
         </div>
+          
+          <Tabela2/>
+          
         
     </div>
   )
