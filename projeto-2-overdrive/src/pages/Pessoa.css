@@ -1,8 +1,12 @@
+
 .tabela {
-    width: 60vw;
+    width: 55vw;
     text-align: center;
     margin: auto;
 }
+@media only screen and (max-device-width: 700px) {
+    .tabela { width: 80vw;  }
+    }
 
 table {
     margin: auto;
@@ -37,5 +41,20 @@ h1 {
     width: 300px;
     margin: 5px;
     border: 1px solid #d6d6d6;
+}
+
+.paginacao{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+.pagin {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 3px;
 }
 

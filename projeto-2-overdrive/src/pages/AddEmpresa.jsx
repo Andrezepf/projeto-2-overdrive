@@ -52,6 +52,7 @@ const AddEmpresa = () => {
       
       if (newcnpj) {
         console.log("valido")
+        setFocus("dataA")
       } else {
         console.log("invalido")
         window.alert("CNPJ INVÁLIDO! Favor inserir um cnpj válido.")
@@ -109,7 +110,7 @@ const AddEmpresa = () => {
             <label htmlFor="cnpj">CNPJ:</label>
           </div>
           <div className="col-12 col-sm-6 form-floating">
-            <input type='date' className="form-control shadow-none" placeholder='Insira a data de abertura da empresa...' required />
+            <input type='date' className="form-control shadow-none" {...register("dataA")}  placeholder='Insira a data de abertura da empresa...' required />
             <label className="form-label">Data de abertura:</label>
           </div>
           <div className="mb-3 form-floating">

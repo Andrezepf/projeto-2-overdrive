@@ -50,6 +50,10 @@
     width: 244px;
 }
 
+@media only screen and (max-device-width: 700px) {
+    #seulogo { margin: 10px auto; }
+    }
+
 .navbar {
     min-height: 8vh;
     display: flex;
@@ -60,6 +64,9 @@
     padding: 0.1em 2em;
     color: #fff;
 }
+@media only screen and (max-device-width: 700px) {
+    .navbar { flex-direction: row;   }
+    }
 
 .ul {
     margin: 0 auto;
@@ -74,6 +81,10 @@
     color: black;
     height: 5vh;
 }
+
+@media only screen and (max-device-width: 700px) {
+    .navb { width:120px; height: auto;  }
+    }
 
 .navcor {
     background-color: rgb(51, 114, 196);

@@ -5,9 +5,11 @@ import validarCpf from 'validar-cpf'
 
 
 import './AddEmpresa.css'
+import { useForm } from 'react-hook-form'
 
 const AddPessoa = () => {
   const [empresas, setEmpresas] = useState([]);
+  const { register, setFocus } = useForm();
 
   const getData = () => {
     var requestOptions = {
@@ -44,6 +46,7 @@ const AddPessoa = () => {
     
     if (newcpf) {
       console.log("valido")
+      setFocus('telefone')
     } else {
       console.log("invalido")
       window.alert("CPF INVÁLIDO! Favor inserir um cpf válido.")
@@ -80,7 +83,7 @@ const phoneMask = (value) => {
             <label className="form-label" htmlFor='cpf'>CPF:</label>
           </div>
           <div className="mb-3 form-floating">
-            <input className="form-control shadow-none" onKeyUp={handlePhone} placeholder='Insira o telefone...' minLength={14} maxLength={15} required />
+            <input className="form-control shadow-none" onKeyUp={handlePhone} {...register("telefone")} name='telefone' id='telefone' placeholder='Insira o telefone...' minLength={14} maxLength={15} required />
             <label className="form-label">Telefone:</label>
           </div>
           <div className="mb-3 form-floating">

@@ -9,7 +9,7 @@ const VisualizarEmpresa = () => {
     return (
 
       <div id="order-form-container" className="my-md-4 px-md-0">
-      <Message color="danger" text="Mensagem de erro enviada!"/>
+      {/* <Message color="danger" text="Mensagem de erro enviada!"/> */}
       <h2>Informações da empresa: </h2>
       <form id="address-form">
         <div className="row mb-3">

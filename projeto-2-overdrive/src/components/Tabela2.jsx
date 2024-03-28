@@ -1,87 +1,89 @@
 import {
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-  } from '@tanstack/react-table'
-  import { useMemo, useState } from 'react'
-  import mData from '../db2.json'
-
-
-
-const Tabela2 = () => {
-
-const data = useMemo(() => mData, [])
-//const [data, setData] = useState(mData)
-
-const columns = [
-    {
-        accessorKey: 'id',
-        header: "ID",
-        //cell: (props) => <p>{props.getValue()}</p>
-      },
-      {
-        accessorKey: 'nome',
-        header: "Nome",
-        //cell: (props) => <p>{props.getValue()}</p>
-      },
-      {
-        accessorKey: 'cpf',
-        header: "CPF",
-        //cell: (props) => <p>{props.getValue()}</p>,
-      },
-      {
-        accessorKey: 'empresa',
-        header: "Empresa",
-        //cell: (props) => <p>{props.getValue()}</p>,
-      },
-      {
-        accessorKey: 'situacao',
-        header: "Situação",
-        //cell: (props) => <p>{props.getValue()}</p>
-      }
-]
+  flexRender,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
+import { useState } from 'react'
 
 
 
 
 
+const Tabela2 = ({data, columns}) => {
 
 
+  const [filtering, setFiltering] = useState('')
 
 
-
-
-
-const table = useReactTable({data, columns, getCoreRowModel: getCoreRowModel()})
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    state: {
+      globalFilter: filtering
+    },
+    onGlobalFilterChange: setFiltering
+  })
 
   return (
     <div>
+      <input
+        className="input-search m-0 mb-2 p-1"
+        placeholder='Pesquisar...'
+        type='text'
+        value={filtering}
+        onChange={e => setFiltering(e.target.value)}
+      />
+      <div className="tabela table-responsive-xxl">
         <table className='table table-hover table-bordered'>
-            <thead>
+          <thead>
             {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id}>
-                    {headerGroup.headers.map(header => <th key={header.id}>
-                        {flexRender(header.column.columnDef.header, header.getContext())}
-                    </th>)}
-                </tr>
-            ))}               
-            </thead>
-            <tbody>
-                {table.getRowModel().rows.map(row => (
-                    <tr key={row.id}>
-                        {row.getVisibleCells().map(cell => (
-                            <td key={cell.id}>
-                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                            </td>
-                        ))}
-                    </tr>
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => <th key={header.id}>
+                  {flexRender(header.column.columnDef.header, header.getContext())}
+                </th>)}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map(row => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map(cell => (
+                  <td className="w-auto h-auto p-2" key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
                 ))}
-                
-            </tbody>
+              </tr>
+            ))}
+
+          </tbody>
         </table>
+      </div>
+      <div className='paginacao'>
+        <button className='pagin btn btn-sm btncor' disabled={!table.getCanPreviousPage()} onClick={() => table.setPageIndex(0)}> {`<<`} </button>
+        <button
+          className='pagin btn btn-sm btncor'
+          disabled={!table.getCanPreviousPage()}
+          onClick={() => table.previousPage()}
+        >
+          {`<`}
+        </button>
+        <button
+          className='pagin btn btn-sm btncor'
+          disabled={!table.getCanNextPage()}
+          onClick={() => table.nextPage()}
+        >
+          {`>`}
+        </button>
+        <button className='pagin btn btn-sm btncor' disabled={!table.getCanNextPage()} onClick={() => table.setPageIndex(table.getPageCount() - 1)}>
+          {`>>`}
+        </button>
+      </div>
     </div>
   )
 }

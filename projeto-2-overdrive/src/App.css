@@ -3,10 +3,12 @@
     width: 65vw;
     min-height: 85vh;
     margin: auto;
-    padding: 20px 40px;
+    padding: 1vw 5vw ;
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-    
 }
+@media only screen and (max-device-width: 700px) {
+    #corpo { width:100%; } 
+    }
 
 .btncor {
     background-color: rgb(51, 114, 196);

@@ -1,14 +1,54 @@
 import { Link, useNavigate } from "react-router-dom"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import './Pessoa.css'
 import Message from "../components/Message";
-import Tabela from "../components/Tabela";
-import { Box, Heading } from "@chakra-ui/react";
 import Tabela2 from "../components/Tabela2";
+import mData from '../dbP.json'
+import { BsEye } from "react-icons/bs";
+
 
 
 
 const Pessoa = () => {
+
+  const data = useMemo(() => mData, [])
+  //const [data, setData] = useState(mData)
+
+  const columns = [
+    {
+      accessorKey: 'id',
+      header: "ID",
+      //cell: (props) => <p>{props.getValue()}</p>
+    },
+    {
+      accessorKey: 'nome',
+      header: "Nome",
+      //cell: (props) => <p>{props.getValue()}</p>
+    },
+    {
+      accessorKey: 'cpf',
+      header: "CPF",
+      //cell: (props) => <p>{props.getValue()}</p>,
+    },
+    {
+      accessorKey: 'empresa',
+      header: "Empresa",
+      //cell: (props) => <p>{props.getValue()}</p>,
+    },
+    {
+      accessorKey: 'situacao',
+      header: "Situação",
+      //cell: (props) => <p>{props.getValue()}</p>
+    },
+    {
+      //accessorKey: 'id',
+      header: "Visualizar",
+      cell: <Link to={`/pessoa/visualizarpessoa/1`} ><button type="button" className="btn btncor"><BsEye/></button></Link>
+    }
+  ]
+
+
+
   const [pessoas, setPessoas] = useState([]);
 
   const getData = () => {
@@ -47,10 +87,10 @@ const Pessoa = () => {
     <div>
 
         <h1>Pessoas</h1>
-        <Message color="success" text="Mensagem enviada com sucesso!"/>
+        {/* <Message color="success" text="Mensagem enviada com sucesso!"/> */}
         <span className="spanlista">Lista de pessoas cadastradas: </span>
-        <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar pessoa</button></Link>
-        <form onSubmit={handleSubmit}>
+        <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor add mt-4">Adicionar pessoa</button></Link>
+        {/* <form onSubmit={handleSubmit}>
             <input className="input-search" type="text" placeholder="Pesquisar..." onChange={(e) => setSearch(e.target.value)} value={search}/>
             <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
         </form>
@@ -83,9 +123,9 @@ const Pessoa = () => {
             </tbody>
           ))}
           </table>
-        </div>
+        </div> */}
           
-          <Tabela2/>
+          <Tabela2 data={data} columns={columns}/>
           
         
     </div>

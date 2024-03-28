@@ -1,11 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import Message from "../components/Message";
+import mData from '../dbE.json'
 
 import './Pessoa.css'
+import Tabela2 from "../components/Tabela2";
+import { BsEye } from "react-icons/bs";
 
 
 const Empresa = () => {
+
+  const data = useMemo(() => mData, [])
+  //const [data, setData] = useState(mData)
+
+  const columns = [
+    {
+      accessorKey: 'id',
+      header: "ID",
+      //cell: (props) => <p>{props.getValue()}</p>
+    },
+    {
+      accessorKey: 'nomefantasia',
+      header: "Nome",
+      //cell: (props) => <p>{props.getValue()}</p>
+    },
+    {
+      accessorKey: 'cnpj',
+      header: "CNPJ",
+      //cell: (props) => <p>{props.getValue()}</p>,
+    },
+    {
+      accessorKey: 'telefone',
+      header: "Telefone",
+      //cell: (props) => <p>{props.getValue()}</p>,
+    },
+    {
+      accessorKey: 'situacao',
+      header: "Situação",
+      //cell: (props) => <p>{props.getValue()}</p>
+    },
+    {
+      //accessorKey: 'id',
+      header: "Visualizar",
+      cell: <Link to={`/empresa/visualizarempresa/1`} ><button type="button" className="btn btncor"><BsEye/></button></Link>
+    }
+  ]
+
+
+
+
   const [empresas, setEmpresas] = useState([]);
 
   const getData = () => {
@@ -43,10 +86,10 @@ const Empresa = () => {
     <div>
 
         <h1>Empresas</h1>
-        <Message color="success" text="Mensagem enviada com sucesso!"/>
+        {/* <Message color="success" text="Mensagem enviada com sucesso!"/> */}
         <span className="spanlista">Lista de empresas cadastradas: </span>
-          <Link to="/empresa/adicionarempresa"><button type="submit" className="btn btncor m-2 add mb-3">Adicionar empresa</button></Link>
-          <form onSubmit={handleSubmit}>
+          <Link to="/empresa/adicionarempresa"><button type="submit" className="btn btncor add mt-4">Adicionar empresa</button></Link>
+          {/* <form onSubmit={handleSubmit}>
             <input className="input-search" type="text" placeholder="Pesquisar..." onChange={(e) => setSearch(e.target.value)} value={search}/>
             <button type="submit" className="btn btncor m-2 mb-3">Buscar</button>
           </form>
@@ -73,8 +116,8 @@ const Empresa = () => {
           </tbody>
           ))}
         </table>
-        </div>
-            
+        </div> */}
+        <Tabela2 data={data} columns={columns}/>  
     </div>
   )
 }
