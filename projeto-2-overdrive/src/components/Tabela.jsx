@@ -9,14 +9,9 @@ import {
 import { useState } from 'react'
 
 
-
-
-
-const Tabela2 = ({data, columns}) => {
-
+const Tabela = ({data, columns}) => {
 
   const [filtering, setFiltering] = useState('')
-
 
   const table = useReactTable({
     data,
@@ -31,9 +26,9 @@ const Tabela2 = ({data, columns}) => {
   })
 
   return (
-    <div>
+    <div className='divTabela'>
       <input
-        className="input-search m-0 mb-2 p-1"
+        className="input-search "
         placeholder='Pesquisar...'
         type='text'
         value={filtering}
@@ -88,4 +83,4 @@ const Tabela2 = ({data, columns}) => {
   )
 }
 
-export default Tabela2
+export default Tabela

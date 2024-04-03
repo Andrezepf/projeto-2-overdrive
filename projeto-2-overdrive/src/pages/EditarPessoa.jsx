@@ -63,7 +63,7 @@ const EditarPessoa = () => {
   }
 
     return (
-        <div id="order-form-container" className="my-md-4 px-md-0">
+        <div id="order-form-container">
       <h2>Informações da pessoa: </h2>
       <form id="address-form" onSubmit={handleSubmit}>
         <div className='row mb-3'>
@@ -102,8 +102,8 @@ const EditarPessoa = () => {
           </select>
               </div>
         </div>
-              <button type="submit" className="btn btncor m-2 mt-1 btn-lg">Salvar</button>
-        <Link to="/pessoa/visualizarpessoa/1"><button type="submit" className="btn btncor m-2 mt-1 btn-lg">Voltar</button></Link>
+              <button type="submit" className="btn btncor btnmenu">Salvar</button>
+        <Link to="/pessoa/visualizarpessoa/1"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
       </form>
     </div>
 

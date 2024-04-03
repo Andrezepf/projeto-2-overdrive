@@ -4,3 +4,21 @@
     margin: auto;
     padding: 10px;
 }
+@media only screen and (max-device-width: 700px) {
+    #edit-profile { width:75vw; } 
+    }
+    #address-form {
+        margin: 0 auto 20px auto;
+    }
+@media only screen and (max-device-width: 700px) {
+    #address-form { 
+        width:75vw;
+        
+    } 
+}
+
+#order-form-container {
+    margin: 5px auto 0 auto;
+    padding: 0 auto;
+}
+

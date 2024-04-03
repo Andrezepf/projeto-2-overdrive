@@ -70,7 +70,7 @@ const phoneMask = (value) => {
 
 
   return (
-    <div id="order-form-container" className="my-md-4 px-md-0">
+    <div id="order-form-container">
       <h2>Informações da pessoa: </h2>
       <form id="address-form" onSubmit={handleSubmit}>
         <div className='row mb-3'>
@@ -102,6 +102,7 @@ const phoneMask = (value) => {
           </select>
           <label className="form-label">Empresa:</label>
           <select className="form-select shadow-none" aria-label="Default select example">
+            <option value="">- Sem vínculo com empresa -</option>
             {empresas.map((empresa) => (
               <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
               ))}
@@ -109,8 +110,8 @@ const phoneMask = (value) => {
           </select>
               </div>
         </div>
-              <button type="submit" className="btn btncor m-2 mt-1 btn-lg">Criar</button>
-        <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-1 btn-lg">Voltar</button></Link>
+              <button type="submit" className="btn btncor btnmenu">Criar</button>
+        <Link to="/pessoa"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
       </form>
     </div>
   )

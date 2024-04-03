@@ -93,10 +93,10 @@ const EditarEmpresa = () => {
 
 
     return (
-        <div id="order-form-container" className="my-md-4 px-md-0">
+        <div id="order-form-container">
       <h2>Informações da empresa: </h2>
       <form id="address-form" onSubmit={handleSubmit}>
-        <div className="row mb-3">
+        <div className="row divBot">
           <div className="mb-3 form-floating">
             <input type="text" className="form-control shadow-none" defaultValue='Empresa de teste ltda' minLength={3} maxLength={255} required />
             <label className="form-label">Nome Empresarial:</label>
@@ -109,11 +109,11 @@ const EditarEmpresa = () => {
             <IMaskInput className="form-control shadow-none" mask="00.000.000/0000-00" name='cnpj' id='cnpj' defaultValue='80.075.560/0001-44' minLength={18} maxLength={18} onKeyUp={valCnpj} data-input required />
             <label htmlFor="cnpj">CNPJ:</label>
           </div>
-          <div className="col-12 col-sm-6 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input type='date' className="form-control" defaultValue="2001-12-13" required />
             <label className="form-label">Data de abertura:</label>
           </div>
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <IMaskInput
               mask="00000-000"
               type="text"
@@ -143,7 +143,7 @@ const EditarEmpresa = () => {
             />
             <label htmlFor="address" >Rua</label>
           </div>
-          <div className="col-12 col-sm-6 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
               {...register("addressNumber")}
               type="text"
@@ -169,7 +169,7 @@ const EditarEmpresa = () => {
             />
             <label htmlFor="complement">Complemento (opcional):</label>
           </div>
-          <div className="col-12 col-sm-6 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
               {...register("neighborhood")}
               type="text"
@@ -238,36 +238,37 @@ const EditarEmpresa = () => {
             </select>
           </div>
 
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input className="form-control shadow-none" onKeyUp={handlePhone} defaultValue="(19) 99999-3333" minLength={14} maxLength={15} required />
             <label className="form-label">Telefone:</label>
           </div>
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input type="text" className="form-control shadow-none" defaultValue='Prestação de serviço' minLength={3} maxLength={255} required />
             <label className="form-label">Natureza jurídica:</label>
+          </div>
+          <div className="col-12 col-sm-6 mb-3 form-floating">
+            <input className="form-control shadow-none" onInput={mascaraMoeda} defaultValue='R$ 350.000,00' minLength={3} maxLength={18} required />
+            <label className="form-label">Capital:</label>
           </div>
           <div className="mb-3 form-floating">
             <input type="text" className="form-control shadow-none" defaultValue='Testes de produtos' minLength={3} maxLength={255} required />
             <label className="form-label">Atividades Econômicas:</label>
-          </div>
-          <div className="mb-3 form-floating">
-            <input className="form-control shadow-none" onInput={mascaraMoeda} defaultValue='R$ 350.000,00' minLength={3} maxLength={18} required />
-            <label className="form-label">Capital:</label>
           </div>
 
 
           <div className="mb-3">
 
           <label className="form-label">Situação cadastral:</label>
-          <select className="form-select shadow-none" aria-label="Default select example" required>
+          <select className="form-select shadow-none" defaultValue="1" required>
+            <option disabled value="">Situação cadastral:</option>
             <option value="1">Ativo</option>
             <option value="2">Inativo</option>
             <option value="3">Pendente</option>
           </select>
           </div>
         </div>
-        <button type="submit" className="btn btncor m-2 mt-4 btn-lg">Salvar</button>
-        <Link to="/empresa/visualizarempresa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
+        <button type="submit" className="btn btncor btnmenu">Salvar</button>
+        <Link to="/empresa/visualizarempresa/1"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
       </form>
     </div>
 

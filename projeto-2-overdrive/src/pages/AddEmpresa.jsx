@@ -93,10 +93,10 @@ const AddEmpresa = () => {
 
 
   return (
-    <div id="order-form-container" className="my-md-4 px-md-0">
+    <div id="order-form-container">
       <h2>Informações da empresa: </h2>
       <form id="address-form" onSubmit={handleSubmit}>
-        <div className="row mb-3">
+        <div className="row divBot">
           <div className="mb-3 form-floating">
             <input type="text" className="form-control shadow-none" placeholder='Insira o nome empresarial...' minLength={5} maxLength={255} required />
             <label className="form-label">Nome Empresarial:</label>
@@ -109,11 +109,11 @@ const AddEmpresa = () => {
             <IMaskInput className="form-control shadow-none" mask="00.000.000/0000-00" name='cnpj' id='cnpj' placeholder='Insira o CNPJ...' minLength={18} maxLength={18} onKeyUp={valCnpj} required />
             <label htmlFor="cnpj">CNPJ:</label>
           </div>
-          <div className="col-12 col-sm-6 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input type='date' className="form-control shadow-none" {...register("dataA")}  placeholder='Insira a data de abertura da empresa...' required />
             <label className="form-label">Data de abertura:</label>
           </div>
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <IMaskInput
               mask="00000-000"
               type="text"
@@ -142,7 +142,7 @@ const AddEmpresa = () => {
             />
             <label htmlFor="address" >Rua</label>
           </div>
-          <div className="col-12 col-sm-6 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
               {...register("addressNumber")}
               type="text"
@@ -167,7 +167,7 @@ const AddEmpresa = () => {
             />
             <label htmlFor="complement">Complemento (opcional):</label>
           </div>
-          <div className="col-12 col-sm-6 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
               {...register("neighborhood")}
               type="text"
@@ -235,36 +235,37 @@ const AddEmpresa = () => {
             </select>
           </div>
 
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input className="form-control shadow-none" onKeyUp={handlePhone} placeholder='Insira o telefone...' minLength={15} maxLength={15} required />
             <label className="form-label">Telefone:</label>
           </div>
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input type="text" className="form-control shadow-none" placeholder='Insira a natureza jurídica da empresa...' minLength={3} maxLength={255} required />
             <label className="form-label">Natureza jurídica:</label>
           </div>
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input type="text" className="form-control shadow-none" placeholder='Insira as ativadades econômicas...' minLength={3} maxLength={255} required />
             <label className="form-label">Atividades Econômicas:</label>
           </div>
-          <div className="mb-3 form-floating">
+          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input className="form-control shadow-none" onInput={mascaraMoeda} placeholder='Insira o capital...' minLength={3} maxLength={18} required />
             <label className="form-label">Capital:</label>
           </div>
 
 
-          <div className="mb-3">
+          <div className="col-12 col-sm-6 mb-3">
 
-            <label className="form-label">Situação cadastral:</label>
-            <select className="form-select shadow-none" aria-label="Default select example" required>
+            
+            <select className="form-select shadow-none" defaultValue="" required>
+              <option disabled value="">Situação cadastral:</option>
               <option value="1">Ativo</option>
               <option value="2">Inativo</option>
               <option value="3">Pendente</option>
             </select>
           </div>
         </div>
-        <button type="submit" className="btn btncor m-2 mt-1 btn-lg">Criar</button>
-        <Link to="/empresa"><button type="submit" className="btn btncor m-2 mt-1 btn-lg">Voltar</button></Link>
+        <button type="submit" className="btn btncor btnmenu">Criar</button>
+        <Link to="/empresa"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
       </form>
     </div>
   )

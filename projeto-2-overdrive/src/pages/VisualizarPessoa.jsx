@@ -25,7 +25,7 @@ const VisualizarPessoa = () => {
     getData();
   }, []);
   return (
-      <div id="order-form-container" className="my-md-4 px-md-0">
+      <div id="order-form-container">
         {/* <Message color="danger" text="Mensagem de erro enviada!" /> */}
         <h2>Informações da pessoa: </h2>
         <form id="address-form">
@@ -69,9 +69,9 @@ const VisualizarPessoa = () => {
               </select>
             </div>
           </div>
-          <Link to="/pessoa/editarpessoa/1"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Editar</button></Link>
-          <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg" onClick={() => { if (window.confirm('Tem certeza que deseja excluir essa pessoa?')); }}>Excluir</button></Link>
-          <Link to="/pessoa"><button type="submit" className="btn btncor m-2 mt-4 btn-lg">Voltar</button></Link>
+          <Link to="/pessoa/editarpessoa/1"><button type="submit" className="btn btncor btnmenu">Editar</button></Link>
+          <Link to="/pessoa"><button type="submit" className="btn btncor btnmenu" onClick={() => { if (window.confirm('Tem certeza que deseja excluir essa pessoa?')); }}>Excluir</button></Link>
+          <Link to="/pessoa"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
         </form>
       </div>
 
