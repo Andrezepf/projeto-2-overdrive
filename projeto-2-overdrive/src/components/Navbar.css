@@ -65,13 +65,22 @@
     color: #fff;
 }
 @media only screen and (max-device-width: 700px) {
-    .navbar { flex-direction: row;   }
+    .navbar { flex-direction: column;   }
     }
 
 .ul {
     margin: 0 auto;
     width: 45%;
 }
+@media only screen and (max-device-width: 700px) {
+    .ul { 
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: row;
+       }
+    }
 
 .navb {
     width: 15vw;
