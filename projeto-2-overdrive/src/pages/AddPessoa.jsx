@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
 import validarCpf from 'validar-cpf'
+import Swal from 'sweetalert2'
 
 
 import './AddEmpresa.css'
@@ -31,6 +32,13 @@ const AddPessoa = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    Swal.fire({
+      title: "Pessoa cadastrada com sucesso!",
+      text: "",
+      icon: "success",
+      showConfirmButton: false,
+      timer: 1500
+    });
     navigate("/pessoa")
   }
 

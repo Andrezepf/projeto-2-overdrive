@@ -1,11 +1,40 @@
 import React from 'react'
 
 import Message from '../components/Message'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
+import Swal from 'sweetalert2'
 
 
 const VisualizarEmpresa = () => {
+
+  const navigate = useNavigate()
+  
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    Swal.fire({
+      title: "Excluir essa empresa?",
+      text: "Essa ação não pode ser desfeita!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#a6a6a6",
+      confirmButtonText: "Excluir!",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Você excluiu a empresa com sucesso.",
+          text: "",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        navigate("/empresa")
+      }
+    });
+}
+
     return (
 
       <div id="order-form-container">
@@ -172,7 +201,7 @@ const VisualizarEmpresa = () => {
           </div>
         </div>
           <Link to="/empresa/editarempresa/1"><button type="submit" className="btn btncor btnmenu">Editar</button></Link>
-            <Link to="/empresa"><button type="submit" className="btn btncor btnmenu" onClick={() => {if(window.confirm('Tem certeza que deseja excluir essa empresa?'));}}>Excluir</button></Link>
+            <Link to="/empresa"><button type="submit" className="btn btncor btnmenu" onClick={handleDelete}>Excluir</button></Link>
             <Link to="/empresa"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
       </form>
     </div>

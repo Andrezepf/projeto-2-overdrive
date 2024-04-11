@@ -3,6 +3,7 @@ import { IMaskInput } from 'react-imask'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import ValidarCnpj from '../Hooks/ValidarCnpj'
+import Swal from 'sweetalert2'
 import './AddEmpresa.css'
 
 const AddEmpresa = () => {
@@ -40,6 +41,13 @@ const AddEmpresa = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    Swal.fire({
+      title: "Empresa cadastrada com sucesso!",
+      text: "",
+      icon: "success",
+      showConfirmButton: false,
+      timer: 1500
+    });
     navigate("/empresa")
   }
 

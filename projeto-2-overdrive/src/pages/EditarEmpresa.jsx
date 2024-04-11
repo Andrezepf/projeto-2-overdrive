@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { IMaskInput } from 'react-imask'
 import { Link, useNavigate } from 'react-router-dom'
 import ValidarCnpj from '../Hooks/ValidarCnpj';
-
+import Swal from 'sweetalert2'
 
 
 const EditarEmpresa = () => {
@@ -41,6 +41,13 @@ const EditarEmpresa = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    Swal.fire({
+      title: "Empresa atualizada com sucesso!",
+      text: "",
+      icon: "success",
+      showConfirmButton: false,
+      timer: 1500
+    });
     navigate("/empresa/visualizarempresa/1")
   }
 
