@@ -39,7 +39,7 @@ const Pessoa = () => {
   ]
   
   return (
-    <div>
+    <div className="divTabela">
         <h1>Pessoas</h1>
         <span className="spanlista">Lista de pessoas cadastradas: </span>
         <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor add">Adicionar pessoa</button></Link>

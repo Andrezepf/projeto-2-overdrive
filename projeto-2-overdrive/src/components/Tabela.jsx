@@ -8,6 +8,8 @@ import {
 } from '@tanstack/react-table'
 import { useState } from 'react'
 
+import '../pages/Pessoa.css'
+
 
 const Tabela = ({data, columns}) => {
 
@@ -49,7 +51,7 @@ const Tabela = ({data, columns}) => {
             {table.getRowModel().rows.map(row => (
               <tr key={row.id}>
                 {row.getVisibleCells().map(cell => (
-                  <td className="w-auto h-auto p-2" key={cell.id}>
+                  <td data-th={cell.column.id} className="w-auto h-auto" key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}

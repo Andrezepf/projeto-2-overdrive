@@ -89,7 +89,7 @@ const AddEmpresa = () => {
       .join("")
       .padStart(3, "0")
     const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
-    event.target.value = maskCurrency(digitsFloat)
+    e.target.value = maskCurrency(digitsFloat)
   }
   
   const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
@@ -252,8 +252,8 @@ const AddEmpresa = () => {
             <label className="form-label">Natureza jurídica:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
-            <input type="text" className="form-control shadow-none" placeholder='Insira as ativadades econômicas...' minLength={3} maxLength={255} required />
-            <label className="form-label">Atividades Econômicas:</label>
+            <IMaskInput type="text" className="form-control shadow-none" mask="0000-0/00" placeholder='Insira o CNAE...' minLength={9} maxLength={9} required />
+            <label className="form-label">CNAE:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
             <input className="form-control shadow-none" onInput={mascaraMoeda} placeholder='Insira o capital...' minLength={3} maxLength={18} required />

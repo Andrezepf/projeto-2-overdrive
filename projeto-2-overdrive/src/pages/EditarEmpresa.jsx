@@ -88,7 +88,7 @@ const EditarEmpresa = () => {
       .join("")
       .padStart(3, "0")
     const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
-    event.target.value = maskCurrency(digitsFloat)
+    e.target.value = maskCurrency(digitsFloat)
   }
   
   const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
@@ -250,16 +250,16 @@ const EditarEmpresa = () => {
             <label className="form-label">Telefone:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
-            <input type="text" className="form-control shadow-none" defaultValue='Prestação de serviço' minLength={3} maxLength={255} required />
-            <label className="form-label">Natureza jurídica:</label>
-          </div>
-          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input className="form-control shadow-none" onInput={mascaraMoeda} defaultValue='R$ 350.000,00' minLength={3} maxLength={18} required />
             <label className="form-label">Capital:</label>
           </div>
+          <div className="col-12 col-sm-6 mb-3 form-floating">
+            <IMaskInput type="text" className="form-control shadow-none" mask="0000-0/00" defaultValue='5684-7/02' minLength={9} maxLength={9} required />
+            <label className="form-label">CNAE:</label>
+          </div>
           <div className="mb-3 form-floating">
-            <input type="text" className="form-control shadow-none" defaultValue='Testes de produtos' minLength={3} maxLength={255} required />
-            <label className="form-label">Atividades Econômicas:</label>
+            <input type="text" className="form-control shadow-none" defaultValue='Prestação de serviço' minLength={3} maxLength={255} required />
+            <label className="form-label">Natureza jurídica:</label>
           </div>
 
 

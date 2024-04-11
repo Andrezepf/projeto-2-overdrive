@@ -177,16 +177,16 @@ const VisualizarEmpresa = () => {
             <label className="form-label">Telefone:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
-            <input type="text" className="form-control shadow-none" value='Prestação de serviço' disabled />
-            <label className="form-label">Natureza jurídica:</label>
-          </div>
-          <div className="col-12 col-sm-6 mb-3 form-floating">
             <input className="form-control shadow-none" value='R$ 350.000,00' disabled />
             <label className="form-label">Capital:</label>
           </div>
+          <div className="col-12 col-sm-6 mb-3 form-floating">
+            <input type="text" className="form-control shadow-none" value='5684-7/02' disabled />
+            <label className="form-label">CNAE:</label>
+          </div>
           <div className="mb-3 form-floating">
-            <input type="text" className="form-control shadow-none" value='Testes de produtos' disabled />
-            <label className="form-label">Atividades Econômicas:</label>
+            <input type="text" className="form-control shadow-none" value='Prestação de serviço' disabled />
+            <label className="form-label">Natureza jurídica:</label>
           </div>
 
 
