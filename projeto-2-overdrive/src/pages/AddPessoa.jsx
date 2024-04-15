@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
 import validarCpf from 'validar-cpf'
 import Swal from 'sweetalert2'
+import mData from '../dbE.json'
 
 
 import './AddEmpresa.css'
@@ -12,21 +13,10 @@ const AddPessoa = () => {
   const [empresas, setEmpresas] = useState([]);
   const { register, setFocus } = useForm();
 
-  const getData = () => {
-    var requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
-    fetch("http://localhost:3030/empresas", requestOptions)
-      .then((response) => response.json())
-      .then((result) => setEmpresas(result))
-      .catch((error) => console.log("error", error));
-  };
-
   useEffect(() => {
-    getData();
+    setEmpresas(mData);
   }, []);
+
 
   const navigate = useNavigate()
 

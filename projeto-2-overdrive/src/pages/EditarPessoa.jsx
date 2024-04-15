@@ -3,27 +3,18 @@ import { IMaskInput } from 'react-imask';
 import { Link, useNavigate } from 'react-router-dom'
 import validarCpf from 'validar-cpf';
 import Swal from 'sweetalert2'
+import mData from '../dbE.json'
 
 
 
 const EditarPessoa = () => {
   const [empresas, setEmpresas] = useState([]);
 
-  const getData = () => {
-    var requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
-    fetch("http://localhost:3030/empresas", requestOptions)
-      .then((response) => response.json())
-      .then((result) => setEmpresas(result))
-      .catch((error) => console.log("error", error));
-  };
-
   useEffect(() => {
-    getData();
+    setEmpresas(mData);
   }, []);
+
+
 
   const navigate = useNavigate()
 
@@ -107,6 +98,7 @@ const EditarPessoa = () => {
           </select>
           <label className="form-label">Empresa:</label>
           <select className="form-select shadow-none" aria-label="Default select example">
+            <option value="">- Sem vínculo com empresa -</option>
             {empresas.map((empresa) => (
               <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
               ))}
