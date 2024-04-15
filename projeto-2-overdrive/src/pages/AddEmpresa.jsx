@@ -14,10 +14,14 @@ const AddEmpresa = () => {
     if (cep.length === 8) {
 
       fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
-        console.log(data);
+        //console.log(data);
         if (data.erro) {
-          window.alert("CEP inválido, tente novamente!")
           document.getElementById('cep').value=''
+          Swal.fire({
+            icon: "error",
+            title: "CEP inválido!",
+            text: "Por favor, digite um CEP válido.",
+          });
           setFocus('cep')
           setValue('address', data.logradouro);
           setValue('neighborhood', data.bairro);
@@ -46,7 +50,7 @@ const AddEmpresa = () => {
       text: "",
       icon: "success",
       showConfirmButton: false,
-      timer: 1500
+      timer: 2000
     });
     navigate("/empresa")
   }
@@ -55,16 +59,20 @@ const AddEmpresa = () => {
     const cnpj = e.target.value.replace(/\D/g, '');
     if (cnpj.length === 14) {
   
-      console.log(cnpj);
+      //console.log(cnpj);
       const newcnpj = ValidarCnpj(cnpj)
       
       if (newcnpj) {
-        console.log("valido")
+        //console.log("valido")
         setFocus("dataA")
       } else {
-        console.log("invalido")
-        window.alert("CNPJ INVÁLIDO! Favor inserir um cnpj válido.")
+        //console.log("invalido")
         document.getElementById('cnpj').value=''
+        Swal.fire({
+          icon: "error",
+          title: "CNPJ inválido!",
+          text: "Por favor, digite um CNPJ válido.",
+        });
       }
     }
   }

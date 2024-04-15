@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Message from '../components/Message'
 import { Link, useNavigate } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
 import Swal from 'sweetalert2'
@@ -28,7 +27,7 @@ const VisualizarEmpresa = () => {
           text: "",
           icon: "success",
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
         navigate("/empresa")
       }
@@ -38,7 +37,6 @@ const VisualizarEmpresa = () => {
     return (
 
       <div id="order-form-container">
-      {/* <Message color="danger" text="Mensagem de erro enviada!"/> */}
       <h2>Informações da empresa: </h2>
       <form id="address-form">
         <div className="row divBot">

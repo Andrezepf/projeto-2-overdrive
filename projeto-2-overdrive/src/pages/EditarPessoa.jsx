@@ -34,7 +34,7 @@ const EditarPessoa = () => {
       text: "",
       icon: "success",
       showConfirmButton: false,
-      timer: 1500
+      timer: 2000
     });
     navigate("/pessoa/visualizarpessoa/1")
   }
@@ -44,15 +44,19 @@ const EditarPessoa = () => {
     const cpf = e.target.value.replace(/\D/g, '');
     if (cpf.length === 11) {
   
-      console.log(cpf);
+      //console.log(cpf);
       const newcpf = validarCpf(cpf)
       
       if (newcpf) {
-        console.log("valido")
+        //console.log("valido")
       } else {
-        console.log("invalido")
-        window.alert("CPF INVÁLIDO! Favor inserir um cpf válido.")
+        //console.log("invalido")
         document.getElementById('cpf').value=''
+        Swal.fire({
+          icon: "error",
+          title: "CPF inválido!",
+          text: "Por favor, digite um CPF válido.",
+        });
       }
     }
   }

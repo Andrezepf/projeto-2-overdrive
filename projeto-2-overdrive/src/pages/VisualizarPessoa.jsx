@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 import './VisualizarPessoa.css'
-import Message from '../components/Message'
 import { Link, useNavigate } from 'react-router-dom'
 import { IMaskInput } from 'react-imask'
 import Swal from 'sweetalert2'
@@ -29,7 +28,7 @@ const VisualizarPessoa = () => {
           text: "",
           icon: "success",
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
         navigate("/pessoa")
       }
@@ -56,7 +55,6 @@ const VisualizarPessoa = () => {
   }, []);
   return (
       <div id="order-form-container">
-        {/* <Message color="danger" text="Mensagem de erro enviada!" /> */}
         <h2>Informações da pessoa: </h2>
         <form id="address-form">
           <div className='row mb-3'>

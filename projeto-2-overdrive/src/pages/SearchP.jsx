@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom"
 import React, { useState, useEffect } from "react";
 import './Pessoa.css'
-import Message from "../components/Message";
 
 
 const SearchP = () => {
