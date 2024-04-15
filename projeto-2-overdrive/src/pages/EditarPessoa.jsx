@@ -100,7 +100,7 @@ const EditarPessoa = () => {
           <select className="form-select shadow-none" aria-label="Default select example">
             <option value="">- Sem vínculo com empresa -</option>
             {empresas.map((empresa) => (
-              <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
+              empresa.situacao != 'Inativo' && <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
               ))}
 
           </select>

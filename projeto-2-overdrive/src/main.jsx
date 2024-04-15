@@ -18,8 +18,7 @@ import EditarPessoa from './pages/EditarPessoa.jsx'
 import VisualizarEmpresa from './pages/VisualizarEmpresa.jsx'
 import EditarEmpresa from './pages/EditarEmpresa.jsx'
 import ScrollToTop from './Hooks/ScrollToTop.jsx'
-import SearchP from './pages/SearchP.jsx'
-import SearchE from './pages/SearchE.jsx'
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -36,8 +35,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path='/empresa' element={<Empresa/>}/>
               <Route path='/pessoa' element={<Pessoa/>}/>
               <Route path='/pessoa/adicionarpessoa' element={<AddPessoa/>}/>
-              <Route path='/pessoa/search' element={<SearchP/>}/>
-              <Route path='/empresa/search' element={<SearchE/>}/>
               <Route path='/empresa/adicionarempresa' element={<AddEmpresa/>}/>
               <Route path='/pessoa/visualizarpessoa/:id' element={<VisualizarPessoa/>}/>
               <Route path='/pessoa/editarpessoa/:id' element={<EditarPessoa/>}/>

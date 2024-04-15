@@ -32,43 +32,43 @@ const AddPessoa = () => {
     navigate("/pessoa")
   }
 
- 
 
- 
- const valCpf = (e) => {
-  const cpf = e.target.value.replace(/\D/g, '');
-  if (cpf.length === 11) {
 
-    //console.log(cpf);
-    const newcpf = validarCpf(cpf)
-    
-    if (newcpf) {
-      //console.log("valido")
-      setFocus('telefone')
-    } else {
-      //console.log("invalido")
-      document.getElementById('cpf').value=''
-      Swal.fire({
-        icon: "error",
-        title: "CPF inválido!",
-        text: "Por favor, digite um CPF válido.",
-      });
+
+  const valCpf = (e) => {
+    const cpf = e.target.value.replace(/\D/g, '');
+    if (cpf.length === 11) {
+
+      //console.log(cpf);
+      const newcpf = validarCpf(cpf)
+
+      if (newcpf) {
+        //console.log("valido")
+        setFocus('telefone')
+      } else {
+        //console.log("invalido")
+        document.getElementById('cpf').value = ''
+        Swal.fire({
+          icon: "error",
+          title: "CPF inválido!",
+          text: "Por favor, digite um CPF válido.",
+        });
+      }
     }
   }
-}
 
-const handlePhone = (e) => {
-  let input = e.target
-  input.value = phoneMask(input.value)
-}
+  const handlePhone = (e) => {
+    let input = e.target
+    input.value = phoneMask(input.value)
+  }
 
-const phoneMask = (value) => {
-  if (!value) return ""
-  value = value.replace(/\D/g,'')
-  value = value.replace(/(\d{2})(\d)/,"($1) $2")
-  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
-  return value
-}
+  const phoneMask = (value) => {
+    if (!value) return ""
+    value = value.replace(/\D/g, '')
+    value = value.replace(/(\d{2})(\d)/, "($1) $2")
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+    return value
+  }
 
 
   return (
@@ -81,7 +81,7 @@ const phoneMask = (value) => {
             <label className="form-label">Nome:</label>
           </div>
           <div className="mb-3 form-floating">
-            <IMaskInput className="form-control shadow-none" id='cpf' name='cpf' data-input mask="000.000.000-00" placeholder='Insira o CPF...' onKeyUp={valCpf} minLength={14} maxLength={14} required/>
+            <IMaskInput className="form-control shadow-none" id='cpf' name='cpf' data-input mask="000.000.000-00" placeholder='Insira o CPF...' onKeyUp={valCpf} minLength={14} maxLength={14} required />
             <label className="form-label" htmlFor='cpf'>CPF:</label>
           </div>
           <div className="mb-3 form-floating">
@@ -95,24 +95,25 @@ const phoneMask = (value) => {
 
 
           <div className="mb-3">
+            <label className="form-label">Situação Cadastral:</label>
+            <select className="form-select shadow-none" defaultValue="2">
+              <option value="1">Ativo</option>
+              <option value="2">Inativo</option>
+              <option value="3">Pendente</option>
+            </select>
 
-          <label className="form-label">Situação Cadastral:</label>
-          <select className="form-select shadow-none" defaultValue="2">
-            <option value="1">Ativo</option>
-            <option value="2">Inativo</option>
-            <option value="3">Pendente</option>
-          </select>
-          <label className="form-label">Empresa:</label>
-          <select className="form-select shadow-none" aria-label="Default select example">
-            <option value="">- Sem vínculo com empresa -</option>
-            {empresas.map((empresa) => (
-              <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
+            <label className="form-label">Empresa:</label>
+            <select className="form-select shadow-none" aria-label="Default select example">
+              <option value="">- Sem vínculo com empresa -</option>
+              {empresas.map((empresa) => (
+                empresa.situacao != 'Inativo' && <option value={empresa.id} key={empresa.id}>{empresa.nomefantasia}</option>
               ))}
+            </select>
 
-          </select>
-              </div>
+          </div>
+
         </div>
-              <button type="submit" className="btn btncor btnmenu">Criar</button>
+        <button type="submit" className="btn btncor btnmenu">Criar</button>
         <Link to="/pessoa"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
       </form>
     </div>
