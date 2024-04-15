@@ -8,7 +8,7 @@ import Swal from 'sweetalert2'
 const VisualizarEmpresa = () => {
 
   const navigate = useNavigate()
-  
+
   const handleDelete = async (e) => {
     e.preventDefault()
     Swal.fire({
@@ -32,11 +32,11 @@ const VisualizarEmpresa = () => {
         navigate("/empresa")
       }
     });
-}
+  }
 
-    return (
+  return (
 
-      <div id="order-form-container">
+    <div id="order-form-container">
       <h2>Informações da empresa: </h2>
       <form id="address-form">
         <div className="row divBot">
@@ -74,20 +74,20 @@ const VisualizarEmpresa = () => {
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
-              
+
               type="text"
               className="form-control shadow-none"
               id="address"
               name="address"
               value="Rua Chile"
               disabled
-              
+
             />
             <label htmlFor="address" >Rua</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
-             
+
               type="text"
               className="form-control shadow-none"
               id="number"
@@ -110,7 +110,7 @@ const VisualizarEmpresa = () => {
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
-              
+
               type="text"
               className="form-control shadow-none"
               id="neighborhood"
@@ -122,7 +122,7 @@ const VisualizarEmpresa = () => {
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
             <input
-              
+
               type="text"
               className="form-control shadow-none"
               id="city"
@@ -190,21 +190,21 @@ const VisualizarEmpresa = () => {
 
           <div className="mb-3">
 
-          <label className="form-label">Situação cadastral:</label>
-          <select className="form-select shadow-none" aria-label="Default select example" disabled>
-            <option value="1">Ativo</option>
-            <option value="2">Inativo</option>
-            <option value="3">Pendente</option>
-          </select>
+            <label className="form-label">Situação cadastral:</label>
+            <select className="form-select shadow-none" aria-label="Default select example" disabled>
+              <option value="1">Ativo</option>
+              <option value="2">Inativo</option>
+              <option value="3">Pendente</option>
+            </select>
           </div>
         </div>
-          <Link to="/empresa/editarempresa/1"><button type="submit" className="btn btncor btnmenu">Editar</button></Link>
-            <Link to="/empresa"><button type="submit" className="btn btncor btnmenu" onClick={handleDelete}>Excluir</button></Link>
-            <Link to="/empresa"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
+        <Link to="/empresa/editarempresa/1"><button type="submit" className="btn btncor btnmenu">Editar</button></Link>
+        <Link to="/empresa"><button type="submit" className="btn btncor btnmenu" onClick={handleDelete}>Excluir</button></Link>
+        <Link to="/empresa"><button type="submit" className="btn btncor btnmenu">Voltar</button></Link>
       </form>
     </div>
 
-    )
+  )
 }
 
 export default VisualizarEmpresa

@@ -16,7 +16,7 @@ const AddEmpresa = () => {
       fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
         //console.log(data);
         if (data.erro) {
-          document.getElementById('cep').value=''
+          document.getElementById('cep').value = ''
           Swal.fire({
             icon: "error",
             title: "CEP inválido!",
@@ -36,7 +36,7 @@ const AddEmpresa = () => {
           setValue('uf', data.uf);
           setFocus('addressNumber');
         }
-          
+
       });
     }
   }
@@ -58,16 +58,16 @@ const AddEmpresa = () => {
   const valCnpj = (e) => {
     const cnpj = e.target.value.replace(/\D/g, '');
     if (cnpj.length === 14) {
-  
+
       //console.log(cnpj);
       const newcnpj = ValidarCnpj(cnpj)
-      
+
       if (newcnpj) {
         //console.log("valido")
         setFocus("dataA")
       } else {
         //console.log("invalido")
-        document.getElementById('cnpj').value=''
+        document.getElementById('cnpj').value = ''
         Swal.fire({
           icon: "error",
           title: "CNPJ inválido!",
@@ -81,12 +81,12 @@ const AddEmpresa = () => {
     let input = e.target
     input.value = phoneMask(input.value)
   }
-  
+
   const phoneMask = (value) => {
     if (!value) return ""
-    value = value.replace(/\D/g,'')
-    value = value.replace(/(\d{2})(\d)/,"($1) $2")
-    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    value = value.replace(/\D/g, '')
+    value = value.replace(/(\d{2})(\d)/, "($1) $2")
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2")
     return value
   }
 
@@ -99,7 +99,7 @@ const AddEmpresa = () => {
     const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
     e.target.value = maskCurrency(digitsFloat)
   }
-  
+
   const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
     return new Intl.NumberFormat(locale, {
       style: 'currency',
@@ -126,7 +126,7 @@ const AddEmpresa = () => {
             <label htmlFor="cnpj">CNPJ:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
-            <input type='date' className="form-control shadow-none" {...register("dataA")}  placeholder='Insira a data de abertura da empresa...' required />
+            <input type='date' className="form-control shadow-none" {...register("dataA")} placeholder='Insira a data de abertura da empresa...' required />
             <label className="form-label">Data de abertura:</label>
           </div>
           <div className="col-12 col-sm-6 mb-3 form-floating">
@@ -215,7 +215,7 @@ const AddEmpresa = () => {
             <select
               {...register("uf")}
               className="form-select shadow-none"
-              
+
               disabled
               required
               data-input
@@ -271,7 +271,7 @@ const AddEmpresa = () => {
 
           <div className="col-12 col-sm-6 mb-3">
 
-            
+
             <select className="form-select shadow-none" defaultValue="" required>
               <option disabled value="">Situação cadastral:</option>
               <option value="1">Ativo</option>

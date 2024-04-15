@@ -34,16 +34,16 @@ const Empresa = () => {
     },
     {
       header: "Visualizar",
-      cell: <Link to={`/empresa/visualizarempresa/1`} ><button type="button" className="btn btncor"><BsEye/></button></Link>
+      cell: <Link to={`/empresa/visualizarempresa/1`} ><button type="button" className="btn btncor"><BsEye /></button></Link>
     }
   ]
 
   return (
     <div className="divTabela">
-        <h1>Empresas</h1>
-        <span className="spanlista">Lista de empresas cadastradas: </span>
-          <Link to="/empresa/adicionarempresa"><button type="submit" className="btn btncor add">Adicionar empresa</button></Link>
-        <Tabela data={data} columns={columns}/>  
+      <h1>Empresas</h1>
+      <span className="spanlista">Lista de empresas cadastradas: </span>
+      <Link to="/empresa/adicionarempresa"><button type="submit" className="btn btncor add">Adicionar empresa</button></Link>
+      <Tabela data={data} columns={columns} />
     </div>
   )
 }

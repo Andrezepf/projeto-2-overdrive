@@ -11,7 +11,7 @@ import { useState } from 'react'
 import '../pages/Pessoa.css'
 
 
-const Tabela = ({data, columns}) => {
+const Tabela = ({ data, columns }) => {
 
   const [filtering, setFiltering] = useState('')
 

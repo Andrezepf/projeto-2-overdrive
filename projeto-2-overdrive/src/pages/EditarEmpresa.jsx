@@ -16,7 +16,7 @@ const EditarEmpresa = () => {
       fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
         //console.log(data);
         if (data.erro) {
-          document.getElementById('cep').value=''
+          document.getElementById('cep').value = ''
           Swal.fire({
             icon: "error",
             title: "CEP inválido!",
@@ -36,7 +36,7 @@ const EditarEmpresa = () => {
           setValue('uf', data.uf);
           setFocus('addressNumber');
         }
-          
+
       });
     }
   }
@@ -58,15 +58,15 @@ const EditarEmpresa = () => {
   const valCnpj = (e) => {
     const cnpj = e.target.value.replace(/\D/g, '');
     if (cnpj.length === 14) {
-  
+
       //console.log(cnpj);
       const newcnpj = ValidarCnpj(cnpj)
-      
+
       if (newcnpj) {
         //console.log("valido")
       } else {
         //console.log("invalido")
-        document.getElementById('cnpj').value=''
+        document.getElementById('cnpj').value = ''
         Swal.fire({
           icon: "error",
           title: "CNPJ inválido!",
@@ -80,12 +80,12 @@ const EditarEmpresa = () => {
     let input = e.target
     input.value = phoneMask(input.value)
   }
-  
+
   const phoneMask = (value) => {
     if (!value) return ""
-    value = value.replace(/\D/g,'')
-    value = value.replace(/(\d{2})(\d)/,"($1) $2")
-    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+    value = value.replace(/\D/g, '')
+    value = value.replace(/(\d{2})(\d)/, "($1) $2")
+    value = value.replace(/(\d)(\d{4})$/, "$1-$2")
     return value
   }
 
@@ -98,7 +98,7 @@ const EditarEmpresa = () => {
     const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
     e.target.value = maskCurrency(digitsFloat)
   }
-  
+
   const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
     return new Intl.NumberFormat(locale, {
       style: 'currency',
@@ -107,8 +107,8 @@ const EditarEmpresa = () => {
   }
 
 
-    return (
-        <div id="order-form-container">
+  return (
+    <div id="order-form-container">
       <h2>Informações da empresa: </h2>
       <form id="address-form" onSubmit={handleSubmit}>
         <div className="row divBot">
@@ -273,13 +273,13 @@ const EditarEmpresa = () => {
 
           <div className="mb-3">
 
-          <label className="form-label">Situação cadastral:</label>
-          <select className="form-select shadow-none" defaultValue="1" required>
-            <option disabled value="">Situação cadastral:</option>
-            <option value="1">Ativo</option>
-            <option value="2">Inativo</option>
-            <option value="3">Pendente</option>
-          </select>
+            <label className="form-label">Situação cadastral:</label>
+            <select className="form-select shadow-none" defaultValue="1" required>
+              <option disabled value="">Situação cadastral:</option>
+              <option value="1">Ativo</option>
+              <option value="2">Inativo</option>
+              <option value="3">Pendente</option>
+            </select>
           </div>
         </div>
         <button type="submit" className="btn btncor btnmenu">Salvar</button>
@@ -287,8 +287,8 @@ const EditarEmpresa = () => {
       </form>
     </div>
 
-        
-    )
+
+  )
 }
 
 export default EditarEmpresa

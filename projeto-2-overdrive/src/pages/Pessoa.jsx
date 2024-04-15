@@ -34,16 +34,16 @@ const Pessoa = () => {
     },
     {
       header: "Visualizar",
-      cell: <Link to={`/pessoa/visualizarpessoa/1`} ><button type="button" className="btn btncor"><BsEye/></button></Link>
+      cell: <Link to={`/pessoa/visualizarpessoa/1`} ><button type="button" className="btn btncor"><BsEye /></button></Link>
     }
   ]
-  
+
   return (
     <div className="divTabela">
-        <h1>Pessoas</h1>
-        <span className="spanlista">Lista de pessoas cadastradas: </span>
-        <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor add">Adicionar pessoa</button></Link>
-          <Tabela data={data} columns={columns}/>
+      <h1>Pessoas</h1>
+      <span className="spanlista">Lista de pessoas cadastradas: </span>
+      <Link to="/pessoa/adicionarpessoa"><button type="submit" className="btn btncor add">Adicionar pessoa</button></Link>
+      <Tabela data={data} columns={columns} />
     </div>
   )
 }

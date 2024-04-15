@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ChakraProvider } from "@chakra-ui/react"
 
 import App from './App.jsx'
@@ -25,26 +25,26 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider>
 
-    <BrowserRouter>
-    <ScrollToTop/>
-    <Navbar/>
-      <div className="container">
-        <Routes>
-            <Route element={<App/>}>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/empresa' element={<Empresa/>}/>
-              <Route path='/pessoa' element={<Pessoa/>}/>
-              <Route path='/pessoa/adicionarpessoa' element={<AddPessoa/>}/>
-              <Route path='/empresa/adicionarempresa' element={<AddEmpresa/>}/>
-              <Route path='/pessoa/visualizarpessoa/:id' element={<VisualizarPessoa/>}/>
-              <Route path='/pessoa/editarpessoa/:id' element={<EditarPessoa/>}/>
-              <Route path='/empresa/visualizarempresa/:id' element={<VisualizarEmpresa/>}/>
-              <Route path='/empresa/editarempresa/:id' element={<EditarEmpresa/>}/>
-            </Route>              
-        </Routes>
-      </div>
-      <Footer/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Navbar />
+        <div className="container">
+          <Routes>
+            <Route element={<App />}>
+              <Route path='/' element={<Home />} />
+              <Route path='/empresa' element={<Empresa />} />
+              <Route path='/pessoa' element={<Pessoa />} />
+              <Route path='/pessoa/adicionarpessoa' element={<AddPessoa />} />
+              <Route path='/empresa/adicionarempresa' element={<AddEmpresa />} />
+              <Route path='/pessoa/visualizarpessoa/:id' element={<VisualizarPessoa />} />
+              <Route path='/pessoa/editarpessoa/:id' element={<EditarPessoa />} />
+              <Route path='/empresa/visualizarempresa/:id' element={<VisualizarEmpresa />} />
+              <Route path='/empresa/editarempresa/:id' element={<EditarEmpresa />} />
+            </Route>
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
     </ChakraProvider>
   </React.StrictMode>,
 )

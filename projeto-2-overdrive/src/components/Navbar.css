@@ -51,8 +51,10 @@
 }
 
 @media only screen and (max-device-width: 700px) {
-    #seulogo { margin: 10px auto; }
+    #seulogo {
+        margin: 10px auto;
     }
+}
 
 .navbar {
     min-height: 8vh;
@@ -64,23 +66,27 @@
     padding: 0.1em 2em;
     color: #fff;
 }
+
 @media only screen and (max-device-width: 700px) {
-    .navbar { flex-direction: column;   }
+    .navbar {
+        flex-direction: column;
     }
+}
 
 .ul {
     margin: 0 auto;
     width: 45%;
 }
+
 @media only screen and (max-device-width: 700px) {
-    .ul { 
+    .ul {
         align-items: center;
         text-align: center;
         justify-content: center;
         display: flex;
         flex-direction: row;
-       }
     }
+}
 
 .navb {
     width: 14vw;
@@ -92,8 +98,11 @@
 }
 
 @media only screen and (max-device-width: 700px) {
-    .navb { width:120px; height: auto;  }
+    .navb {
+        width: 120px;
+        height: auto;
     }
+}
 
 .navcor {
     background-color: rgb(51, 114, 196);
@@ -109,5 +118,3 @@
     color: #f8f8f8;
     box-shadow: inset -3px -3px 10px 2px rgba(0, 0, 0, 0.2);
 }
-
-
